@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EAEP,UAAU,EAAE,IAAI;CAOnB;;AATD,AAII,UAJM,CAIN,YAAY,CAAC;EAET,UAAU,EAAE,IAAI;EAChB,cAAc,EAAE,KAAK;CACxB",
+    "sources": [
+        "styleRegister.scss"
+    ],
+    "names": [],
+    "file": "styleRegister.css"
+}
