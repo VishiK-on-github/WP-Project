@@ -9,24 +9,24 @@ function validateLoginForm(){
     
     // Getting values of input from the form
 
-    var username = (document.getElementById("uname").value).trim();
+    var pid = (document.getElementById("pid").value).trim();
     var password = (document.getElementById("pass").value).trim();
 
     // Defining regex for filtering (!important!)
 
-    const regexUsername = /^[a-zA-Z0-9]+$/;
-    const regexPassword = /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/;
+    const regexPid = /^\d{1,5}$/;
+    const regexPassword = /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/; //One capital, one small, one number, one special character, min length 8
 
 
     function formValidityStatus() {
 
         // Container for different validity testing
 
-        sf1 = validUsername(username, regexUsername);
+        sf1 = validPid(pid, regexPid);
         sf2 = validPassword(password, regexPassword);
 
     
-        //alert(`Username status : ${sf1}`);
+        //alert(`pid status : ${sf1}`);
         //alert(`Password status : ${sf2}`);
         
 
@@ -38,24 +38,24 @@ function validateLoginForm(){
     return formValidityStatus();
 }
 
-function validUsername(username, pattern) {
+function validPid(pid, pattern) {
 
-    if(username == null || username == "") {
+    if(pid == null || pid == "") {
 
         // not valid (Empty !)
-        document.getElementById("uname").style.border = "2px solid #dc3545";
+        document.getElementById("pid").style.border = "2px solid #dc3545";
         return false;
     }
-    else if(pattern.test(username) != false) {
+    else if(pattern.test(pid) != false) {
 
         // valid 
-        document.getElementById("uname").style.border = "2px solid lightgreen";
+        document.getElementById("pid").style.border = "2px solid lightgreen";
         return true;
     }
     else {
 
         // not valid other conditions
-        document.getElementById("uname").style.border = "2px solid #dc3545";
+        document.getElementById("pid").style.border = "2px solid #dc3545";
         return false;
     }
 }
