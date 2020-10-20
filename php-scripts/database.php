@@ -74,5 +74,4 @@
         FOREIGN KEY (complaint_id)  REFERENCES complaint(complaint_id), 
         PRIMARY KEY (policest_id, complaint_id)
     )";
-
 ?>
