@@ -17,6 +17,7 @@ if(isset($_POST["submit"])){
     if(empty($pid)){
 
         echo "Police ID is empty !!! <br>";
+        $sf1 = false;
     }
     elseif(!$valid_pid) {
 
