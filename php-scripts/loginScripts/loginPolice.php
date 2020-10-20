@@ -6,25 +6,25 @@ We are validating the login form for police
 
 if(isset($_POST["submit"])){
 
-    $username = trim($_POST["uname"]);
+    $pid = trim($_POST["pid"]);
     $password = $_POST["pass"];
 
     // May need to change the regex !!!
-    $valid_uname = preg_match("/^(?=.{1,})(?=.*[a-z])(?=.*[A-Z]).*$/", $username);
+    $valid_pid = preg_match("/^\d{1,5}$/", $pid);
     $valid_pass = preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/", $password);
 
-    // Validation of Username
-    if(empty($username)){
+    // Validation of pid
+    if(empty($pid)){
 
-        echo "Username is empty !!! <br>";
+        echo "Police ID is empty !!! <br>";
     }
-    elseif(!$valid_uname) {
+    elseif(!$valid_pid) {
 
-        echo "Username is valid <br>";
+        echo "Police ID is valid <br>";
     }
     else{
 
-        echo "$username is valid Username <br>";
+        echo "$pid is valid Police ID <br>";
     }
 
     // Validation of Password
