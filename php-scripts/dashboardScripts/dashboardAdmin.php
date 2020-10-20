@@ -6,7 +6,7 @@
 			$dbuser = "root";
 			$dbpass = "1234";
 			$db = "wp_project";
-			$conn = new mysqli($dbhost, $dbuser, $dbpass,$db);
+			$conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
 			return $conn;
 		}
 
@@ -28,8 +28,8 @@
 		$sql_query="SELECT * FROM polic_station WHERE policest_id='$pid'";//query to display info
 		$result = $conn->query($sql_query);//executing sql query
 		$list = $result->fetch_assoc();
-		$location=list["location"];
-		$p_pass=list["pwd"];
+		$location = $list["location"];
+		$p_pass = $list["pwd"];
 		$conn -> close();// closing connection to server
 	}
 
