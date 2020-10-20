@@ -1,4 +1,5 @@
 <?php
+
     // function to connect to databse
     function OpenConnection()
    {
@@ -6,7 +7,7 @@
         $dbhost = "localhost";
         $dbuser = "root";
         $dbpass = "1234";
-        $db = "wp_lab9";
+        $db = "wp_project";
         $conn = new mysqli($dbhost, $dbuser, $dbpass,$db);
     
         return $conn;
@@ -73,4 +74,5 @@
         FOREIGN KEY (complaint_id)  REFERENCES complaint(complaint_id), 
         PRIMARY KEY (policest_id, complaint_id)
     )";
+
 ?>
