@@ -4,7 +4,7 @@
 	{
 		$dbhost = "localhost";
 		$dbuser = "root";
-		$dbpass = "";
+		$dbpass = "1234";
 		$db = "wp_project";
 		$conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
 		return $conn;
