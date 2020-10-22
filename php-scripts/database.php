@@ -50,7 +50,7 @@
 
     // query to create police station table
     $sql2 =  "CREATE TABLE IF NOT EXISTS police_station(
-        policest_id INT PRIMARY KEY AUTO_INCREMENT,
+        police_id INT PRIMARY KEY,
         pwd VARCHAR(50) NOT NULL UNIQUE,
         location VARCHAR(70) NOT NULL
                 
@@ -68,10 +68,10 @@
 
     // query to create assign table
     $sql4 = "CREATE TABLE IF NOT EXISTS assign (
-        policest_id INT NOT NULL,
+        police_id INT NOT NULL,
         complaint_id INT NOT NULL,
-        FOREIGN KEY (policest_id)  REFERENCES police_station(policezt_id),
+        FOREIGN KEY (police_id)  REFERENCES police_station(police_id),
         FOREIGN KEY (complaint_id)  REFERENCES complaint(complaint_id), 
-        PRIMARY KEY (policest_id, complaint_id)
+        PRIMARY KEY (police_id, complaint_id)
     )";
 ?>
