@@ -1,14 +1,14 @@
 <?php
 	
 	function OpenCon()  //Function to open connection to server
-		{
-			$dbhost = "localhost";
-			$dbuser = "root";
-			$dbpass = "1234";
-			$db = "wp_project";
-			$conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
-			return $conn;
-		}
+	{
+		$dbhost = "localhost";
+		$dbuser = "root";
+		$dbpass = "";
+		$db = "wp_project";
+		$conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
+		return $conn;
+	}
 
 	if(isset($_POST["add_PS"]))
 	{
