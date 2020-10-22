@@ -4,7 +4,7 @@
 		// Empty fields
 	 	if(empty($_POST['username']) || empty($_POST['password']))
 		{
-			echo "Please enter Username and Password<br>";
+			//echo "Please enter Username and Password<br>";
 			$sf1 = false;
 			$sf2 = false;
 		}
@@ -15,12 +15,12 @@
 
 		if(!$valid_pass) {
 
-			echo "Wrong format for the password! <br>";
+			//echo "Wrong format for the password! <br>";
 			$sf1 = false;
 		}
 		else {
 
-			echo "Valid Password ! <br>";
+			//echo "Valid Password ! <br>";
 			$sf1 = true;
 		}
 
@@ -30,12 +30,12 @@
 
 		if(!$valid_username) {
 
-			echo "$username is invalid Username ! <br>";
+			//echo "$username is invalid Username ! <br>";
 			$sf2 = false;
 		}
 		else {
 
-			echo "Valid Username ! <br>";
+			//echo "Valid Username ! <br>";
 			$sf2 = true;
 		}
 
@@ -48,12 +48,14 @@
 
 			// There has been an error with 
 			//header("location : error");
-			echo "Username or Password is incorrect !!!";
+			//echo "Username or Password is incorrect !!!";
+			// ! REDIRECT TO ERROR PAGE !
 		}
 	}
 	else 
 	{
-		echo "Something went wrong !!! <br>";
+		//echo "Something went wrong !!! <br>";
+		// ! REDIRECT TO ERROR PAGE !
 	}
 
 	function OpenConnection() {
@@ -80,7 +82,6 @@
 		# Create Session so that we can pass this and continue in future pages
 
 		# Creating a session and storing session info
-		session_start();
 		$_SESSION["username"] = $user;
 
 		# Creating a connection object
@@ -89,10 +90,11 @@
 		if($conn == false) {
 
 			die("ERROR: Could not connect. " . $conn->connect_error);
+			// Display some error message
 		}
 		else {
 
-			echo "Connected Successfully";
+			//echo "Connected Successfully";
 		}
 
 		// query to create citizen table
@@ -120,17 +122,41 @@
             echo "Inserted into table successfully.";
         } else{
             echo "ERROR: Could not able to execute $sql1. " . $conn->error;
-        }*/
-
+		}*/
+		
+		// Setting the query to check the username and password
 		$sqlValid = "SELECT username, pwd FROM citizen WHERE username='$user'";
 
+		// Querying the result
 		$result = $conn->query($sqlValid);
 
-		if($result->num_rows > 0) {
+		$result0 = mysqli_fetch_array($result);
 
-			while($row = $result->fetch_assoc()) {
-				echo "Username : " . $row["username"] . " Password : " . $row["pwd"];
+		if($result != false) {
+
+			/*echo "Username : $result0[0] <br>";
+			echo "Password : $result0[1] <br>";
+			$var1 = $result0[0] == $user;
+			$var2 = $result0[1] == $pass;
+			echo "$var1";
+			echo "$var2";*/
+
+			// If username and password are matching we redirect to citizen dashboard
+			if($result0[0] == $user && $result0[1] == $pass) {
+
+				//echo "Success";
+				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.html");
 			}
+			else {
+
+				// ! REDIRECT TO ERROR PAGE !
+			}
+
+		}
+		else {
+
+			echo "Username or password incorrect";
+			// ! REDIRECT TO ERROR PAGE !
 		}
 
 	}
