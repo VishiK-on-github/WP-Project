@@ -111,7 +111,6 @@ function showViewComplaint() {
     document.getElementById("complaint-functions").style.display = "block";
 
     document.getElementById("complaint-view").style.display = "block";
-    document.getElementById("complaint-update").style.display = "none";
     document.getElementById("complaint-delete").style.display = "none";
 }
 
@@ -124,5 +123,4 @@ function showDeleteComplaint() {
 
     document.getElementById("complaint-delete").style.display = "block";
     document.getElementById("complaint-view").style.display = "none";
-    document.getElementById("complaint-update").style.display = "none";
 }
