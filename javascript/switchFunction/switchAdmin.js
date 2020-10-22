@@ -115,18 +115,6 @@ function showViewComplaint() {
     document.getElementById("complaint-delete").style.display = "none";
 }
 
-// To show the complaint-update div and hide all other components
-function showUpdateComplaint() {
-
-    document.getElementById("police-functions").style.display = "none";
-    document.getElementById("citizen-functions").style.display = "none";
-    document.getElementById("complaint-functions").style.display = "block";
-    
-    document.getElementById("complaint-update").style.display = "block";
-    document.getElementById("complaint-view").style.display = "none";
-    document.getElementById("complaint-delete").style.display = "none";
-}
-
 // To show the complaint-delete div and hide all other components
 function showDeleteComplaint() {
 
