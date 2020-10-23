@@ -1,4 +1,6 @@
 <?php
+
+	session_start();
 	if(isset($_POST['submit']))
 	{
 		// Empty fields
@@ -145,7 +147,7 @@
 			if($result0[0] == $user && $result0[1] == $pass) {
 
 				//echo "Success";
-				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.html");
+				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
 			}
 			else {
 
