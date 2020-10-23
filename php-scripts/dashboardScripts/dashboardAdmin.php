@@ -22,39 +22,58 @@
 		$conn -> close();// closing connection to server
 	}
 	
-	if(isset($_POST["add_PS"]))
+	if($_GET['function']=='add')
 	{
-		echo "i am in add";
 		$conn = OpenCon(); //opening connection to server
-		$pid=$_POST["pid"];
-		$location=$_POST["location"];
-		$p_pass=$_POST["p_pass"];
+		$pid=$_GET["id"];
+		$location=$_GET["location"];
+		$p_pass=$_GET["password"];
 		$sql_query="INSERT INTO police_station SET police_id='$pid', location='$location',pwd='$p_pass' "; //query to insert into police table
-		$conn->query($sql_query);//executing sql query
+		if($conn->query($sql_query)===true)//executing sql query
+		{
+			echo "Data has been added to table";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
+
 		$conn -> close();// closing connection to server
 	}
 
 	
 
-	if(isset($_POST["update_PS"]))
+	if($_GET['function']=='update')
 	{
-		echo "i am in update";
 		$conn = OpenCon(); //opening connection to server
-		$pid=$_POST["pid_up"];
-		$location=$_POST["location_up"];
-		$p_pass=$_POST["p_pass_up"];
+		$pid=$_GET["id"];
+		$location=$_GET["location"];
+		$p_pass=$_GET["password"];
 		$sql_query="UPDATE police_station SET pwd = '$p_pass',location='$location' WHERE police_id = '$pid' "; //query to update police table
-		$conn->query($sql_query);//executing sql query
+		if($conn->query($sql_query)===true) //executing sql query
+		{
+			echo "Data has been updated";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
 		$conn -> close();// closing connection to server
 	}
 
-	if(isset($_POST["delete_PS"]))
+	if($_GET['function']=='delete')
 	{
-		echo "i am in delete";
 		$conn = OpenCon(); //opening connection to server
-		$pid=$_POST["pid_delete"];
+		$pid=$_GET["id"];
 		$sql_query="DELETE FROM police_station WHERE police_id = '$pid' "; //query to delete police table
-		$conn->query($sql_query);//executing sql query
+		if($conn->query($sql_query)===true) //executing sql query
+		{
+			echo "Data has been deleted";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
 		$conn -> close();// closing connection to server
 	}
 

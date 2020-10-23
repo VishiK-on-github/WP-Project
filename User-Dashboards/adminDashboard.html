@@ -132,7 +132,7 @@
                                             <input type="password" name="p_pass" id="p_pass" class="form-control" required>
                                         </div>
                                         <div class="mb-4">
-                                            <button class="btn btn-outline-success" type="submit" name="add_PS" id="add_PS">Create Police Station</button>
+                                            <button class="btn btn-outline-success" type="submit" onclick="add()" name="add_PS" id="add_PS">Create Police Station</button>
                                         </div>
                                     </form>
                                 </div>
@@ -147,7 +147,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <!-- Add action -->
-                                    <form name="form_police_update"  action="http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php" method="post">
+                                     <form name="form_police_update" action="javascript:void(0);" method="post">
                                         <div class="mb-4">
                                             <label for="">Police Station ID</label>
                                             <input type="number" name="pid_up" id="pid_up" class="form-control" required>
@@ -173,7 +173,7 @@
                                             <input type="password" name="pass_confirm_up" id="pass__confirm_up" class="form-control" required>
                                         </div>
                                         <div class="mb-4">
-                                            <button class="btn btn-outline-success" type="submit" name="update_PS" id="update_PS">Update Police Station</button>
+                                            <button class="btn btn-outline-success" type="submit" onclick="update()" name="update_PS" id="update_PS">Update Police Station</button>
                                         </div>
                                     </form>
                                 </div>
@@ -188,13 +188,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <!-- Add action -->
-                                    <form name="form_police_delete"  action="http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php" method="post">
+                                     <form name="form_police_delete" action="javascript:void(0);" method="post">
                                         <div class="mb-4">
                                             <label for="">Police Station ID</label>
                                             <input type="number" name="pid_delete" id="pid_delete" class="form-control" required>
                                         </div>
                                         <div class="mb-4">
-                                            <button class="btn btn-outline-danger" type="submit" name="delete_PS" id="delete_PS">Delete Police Station</button>
+                                            <button class="btn btn-outline-danger" type="submit" onclick="delete_func()" name="delete_PS" id="delete_PS">Delete Police Station</button>
                                         </div>
                                     </form>
                                 </div>
