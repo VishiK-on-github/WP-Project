@@ -45,7 +45,8 @@
     $sql1 = "CREATE TABLE IF NOT EXISTS complaint(
         complaint_id INT PRIMARY KEY AUTO_INCREMENT,
         complaint_status VARCHAR(70) NOT NULL,
-        complaint_desc VARCHAR(200)        
+        complaint_desc VARCHAR(200),
+        location VARCHAR(30)
     )";
 
     // query to create police station table
