@@ -147,7 +147,7 @@
 			if($result0[0] == $user && $result0[1] == $pass) {
 
 				//echo "Success";
-				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.html");
 			}
 			else {
 
