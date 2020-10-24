@@ -69,14 +69,13 @@ if(isset($_POST["submit-complaint"])) {
 
     // Insert into assign table
     $assign = "INSERT INTO assign (police_id, complaint_id) VALUES ('$policeID1', '$complaintID1')";
-    $conn->query($assign);
+    $assignQuery = $conn->query($assign);
 
     // Insert into lodges table
     $lodges = "INSERT INTO lodges (citizen_id, complaint_id, dt) VALUES ('$citizenID', '$complaintID1', NOW())";
-    $conn->query($lodges);
+    $lodgesQuery = $conn->query($lodges);
 
     echo "Success  <br>";
-
 }
 
 if(isset($_POST["sign-out"])) {
