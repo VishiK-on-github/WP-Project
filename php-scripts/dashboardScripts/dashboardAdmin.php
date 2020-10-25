@@ -1,5 +1,6 @@
-<?php
+<?php 
 	
+	session_start(); 
 
 	function OpenCon()  //Function to open connection to server
 	{
@@ -10,6 +11,13 @@
 		$conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
 		return $conn;
 	}
+
+	if($_GET['function']=='onload')
+	{
+		echo $_SESSION["username"];
+		//echo "yo";
+	}
+
 
 	if($_GET['function']=='display')
 	{

@@ -1,5 +1,9 @@
 <?php
 
+if(isset($_POST["submit"]))
+{
+
+    
     // function to connect to databse
     function OpenConnection()
    {
@@ -75,4 +79,23 @@
         FOREIGN KEY (complaint_id)  REFERENCES complaint(complaint_id), 
         PRIMARY KEY (police_id, complaint_id)
     )";
+
+    // query to create assign table
+    $sql5 = "CREATE TABLE IF NOT EXISTS admin (
+        username VARCHAR(20) PRIMARY KEY,
+        pwd VARCHAR(20) NOT NULL
+    )";
+
+
+    if($conn->query($sql5) === true)
+    {
+    echo "Table created successfully.";
+    } 
+    else
+    {
+    echo "ERROR: Could not able to execute $sql5. " . $conn->error;
+    }
+}
+
+
 ?>

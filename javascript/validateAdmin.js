@@ -35,6 +35,9 @@ function formValidation() {
 
     // Method which will give us validity of form
 
+    //if (formValidityStatus()) {
+    //    ajax();
+    //}
     return formValidityStatus();
 }
 
@@ -81,4 +84,26 @@ function validPassword(password, pattern) {
         return false;
     }
 }
+
+//function ajax() {
+//    var username = document.getElementById("username").value;  //username
+//    var passid = document.getElementById("passid").value;  //password
+//    var data = "function=verification&username=" + username + "&passid=" + passid;
+//    $.ajax({ //using ajax to send data to php script to avoid refreshing of page
+//        url: "http://localhost/wp_project/WP-Project/php-scripts/loginScripts/loginAdmin.php",
+//        data: data,
+//        success: function (message) {
+//            if (message == "true") {
+//                //window.location.href = "../../wp_project/wp-project/user-dashboards/admindashboard.html";
+//                alert("You got in bitch");
+//            }
+//            else {
+//                //alert("you have entered incorrect username or password")
+//                alert(message);
+//            }
+//        }
+//    });
+//    return false;
+//}
+
 
