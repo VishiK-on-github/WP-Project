@@ -41,7 +41,7 @@
         age VARCHAR(3) NOT NULL        
     )";
 
-    // query to create citizen table
+    // query to create complaint table
     $sql1 = "CREATE TABLE IF NOT EXISTS complaint(
         complaint_id INT PRIMARY KEY AUTO_INCREMENT,
         complaint_status VARCHAR(70) NOT NULL,
