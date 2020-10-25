@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Login - Admin</title>
 		<script src="javascript/validateAdmin.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<link rel="stylesheet" href="stylesheet-css/StyleLogin/styleLogin.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -36,7 +37,7 @@
 			</nav>
 		</header>
 		<div class="container">
-			<form action="http://localhost/wp_project/WP-Project/php-scripts/loginScripts/loginAdmin.php" onsubmit="return formValidation()" method="POST">
+			 <form name="form_admin_signin" id="form_admin_signin" action="http://localhost/wp_project/WP-Project/php-scripts/loginScripts/loginAdmin.php" onsubmit="return formValidation()" target="view"  method="post">
 				<div class="form-login">
 					<h3 class="mb-4 text-center">Admin Sign In</h3>
 					<div class="mb-3">
@@ -68,10 +69,13 @@
 						</div>
 					</div>
 					<div class="mb-3 form-submit">
-						<button class="btn btn-outline-success btn-block" value="Submit" name="submit">Log In</button>
+						<button class="btn btn-outline-success btn-block" value="Submit"  name="submit">Log In</button>
 					</div>
 				</div>
 			</form>
+			
+
+
 		</div>
 		<footer>
             <!-- Footer Content -->

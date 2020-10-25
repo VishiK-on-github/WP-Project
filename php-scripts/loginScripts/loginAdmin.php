@@ -1,26 +1,34 @@
 <?php
-	function validation(){
-        
-        if(empty($_POST['username']))
-        {
-            echo "Username is empty";
-            return false;
-        }
-        if(empty($_POST['passid']))
-        {
-            echo "Password is empty";
-            return false;
-        } 
-        elseif (!empty($_POST['passid'])) {
-            $p= $_POST['passid'];
-            $pattern="@[A-Z]@";
-            $a=preg_match($pattern,$p);
-        if(!$a){
-            echo "Please enter password according to required conditions";
-            return false;
-        }
-    }
-}
-    validation();
 
+	session_start();
+
+	function OpenCon()  //Function to open connection to server
+	{
+		$dbhost = "localhost";
+		$dbuser = "root";
+		$dbpass = "1234";
+		$db = "wp_project";
+		$conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
+		return $conn;
+	}
+	
+	if(isset($_POST['Submit']))
+	{
+		$conn = OpenCon(); //opening connection to server
+		$username=$_POST['username'];
+		$password=$_POST['passid'];
+		$sql_query="SELECT pwd FROM admin WHERE username='$username'";//query to check password
+		$result = $conn->query($sql_query);  //retrieving password from db
+		$list = $result->fetch_assoc();  //converting to associative array
+		if($password==$list['pwd'])
+		{
+			$_SESSION["username"]= $username;
+			echo "User exists";
+		}
+		else
+		{
+			echo "User does not exist";
+		}
+		$conn -> close();// closing connection to server
+	}
 ?>
