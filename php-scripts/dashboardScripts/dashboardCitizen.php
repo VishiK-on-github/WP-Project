@@ -47,7 +47,7 @@ if(isset($_POST["submit-complaint"])) {
     // To register a new complaint
     $complaintRegister = "INSERT INTO complaint (complaint_status, complaint_desc, location) VALUES ('default', '$complaint', '$location')";
 
-    $conn->query($complaintRegister);
+    $complaintRegisterQuery = $conn->query($complaintRegister);
     
     // To get complaint id for latest complaint
     $getComplaintID = "SELECT LAST_INSERT_ID()";
@@ -75,7 +75,10 @@ if(isset($_POST["submit-complaint"])) {
     $lodges = "INSERT INTO lodges (citizen_id, complaint_id, dt) VALUES ('$citizenID', '$complaintID1', NOW())";
     $lodgesQuery = $conn->query($lodges);
 
-    echo "Success  <br>";
+    if($resultCitizenIDQuery && $complaintRegisterQuery && $complaintIDQuery && $policeIDQuery && $assignQuery && $lodgesQuery) {
+        echo "<script>alert('Complaint added successfully')</script>";
+        header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+    }
 }
 
 if(isset($_POST["sign-out"])) {
