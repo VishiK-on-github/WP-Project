@@ -23,9 +23,9 @@ if(isset($_POST["submit-complaint"])) {
 
     // Adding complaint to the database
 
-    $location = $_POST["location"];
-    $complaint = $_POST["new-complaint"];
-    $user = $_SESSION["username"];
+    $location = trim($_POST["location"]);
+    $complaint = trim($_POST["new-complaint"]);
+    $user = trim($_SESSION["username"]);
 
     echo "Location : $location <br>";
     echo "Complaint : $complaint <br>";

@@ -15,7 +15,7 @@ function OpenCon()  //Function to open connection to server
 if(isset($_POST["submit-update"])) {
     $conn = OpenCon(); //opening connection to server
     
-    $citizen_id = $_POST["id"];
+    $citizen_id = trim($_POST["id"]);
     
     // fetch the complaint id
     $getComplaintId = $conn -> query("SELECT complaint_id from lodges WHERE cizitzen_id = '$citizen_id' ");
