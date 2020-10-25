@@ -75,4 +75,12 @@
         FOREIGN KEY (complaint_id)  REFERENCES complaint(complaint_id), 
         PRIMARY KEY (police_id, complaint_id)
     )";
+
+    // Queries for police station
+    $insertStation1 = "INSERT INTO police_station (police_id,pwd,location) VALUES (101,'Andheri1234_*','Andheri')";
+    $insertStation2 = "INSERT INTO police_station (police_id,pwd,location) VALUES (102,'DNNagar1234_*','D.N. Nagar')";
+    $insertStation3 = "INSERT INTO police_station (police_id,pwd,location) VALUES (103,'Jogeshwari1234_*','Jogeshwari')";
+    $insertStation4 = "INSERT INTO police_station (police_id,pwd,location) VALUES (104,'Juhu1234_*','Juhu')";
+    $insertStation5 = "INSERT INTO police_station (police_id,pwd,location) VALUES (105,'Kandivali1234_*','Kandivali')";
+
 ?>
