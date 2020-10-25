@@ -12,7 +12,7 @@
 		}
 
 		//password validation
-		$password = $_POST["password"];
+		$password = trim($_POST["password"]);
 		$valid_pass = preg_match("/^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/", $password);
 
 		if(!$valid_pass) {
@@ -27,7 +27,7 @@
 		}
 
 		// Username validation
-		$username = $_POST["username"];
+		$username = trim($_POST["username"]);
 		$valid_username = preg_match("/^[a-zA-Z0-9]+$/", $username);
 
 		if(!$valid_username) {
@@ -147,7 +147,7 @@
 			if($result0[0] == $user && $result0[1] == $pass) {
 
 				//echo "Success";
-				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.html");
 			}
 			else {
 

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script src="../javascript/switchFunction/switchCitizen.js"></script>
+        <script src="../User-Dashboards/javascriptCitizen/validComplaint.js"></script>
     </head>
     <body>
         <header>
@@ -46,21 +47,27 @@
                             Table Content
                             </table>
                         </div>
-                        </div>
-                        <div id="citizen-register-new-complaint" style="display: none;">
+                    </div>
+                    <div id="citizen-register-new-complaint" style="display: none;">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h1>Register New Complaint</h1>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <form name="register-complaint" action="../php-scripts/dashboardScripts/dashboardCitizen.php" method="POST">
+                                <form name="register-complaint" onsubmit="return validNewComplaint()" action="../php-scripts/dashboardScripts/dashboardCitizen.php" method="POST">
                                     <div class="mb-4">
                                         <label for="new-complaint">Complaint</label>
-                                        <textarea name="new-complaint" id="new-complaint" class="form-control" required></textarea>
+                                        <textarea name="new-complaint" id="new-complaint" class="form-control" required placeholder="Limit: 200 characters"></textarea>
                                     </div>
                                     <div class="mb-5">
                                         <label for="location">Location</label>
-                                        <input type="text" name="location" id="location" class="form-control" required>
+                                        <select class="form-control" name="location" id="location" required>
+                                            <option value="Andheri">Andheri</option>
+                                            <option value="D.N. Nagar">D.N. Nagar</option>
+                                            <option value="Jogeshwari">Jogeshwari</option>
+                                            <option value="Juhu">Juhu</option>
+                                            <option value="Kandivali">Kandivali</option>
+                                        </select>
                                     </div>
                                     <div class="mb-4">
                                         <button type="submit" name="submit-complaint" id="submit-complaint" class="btn btn-outline-success">Register Complaint</button>

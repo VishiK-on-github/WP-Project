@@ -1,9 +1,5 @@
 <?php
 
-if(isset($_POST["submit"]))
-{
-
-    
     // function to connect to databse
     function OpenConnection()
    {
@@ -39,13 +35,14 @@ if(isset($_POST["submit"]))
         username VARCHAR(30) NOT NULL UNIQUE,
         email VARCHAR(50) NOT NULL UNIQUE,
         pwd VARCHAR(50) NOT NULL UNIQUE,
-        address VARCHAR(200) NOT NULL UNIQUE,
+        address VARCHAR(200) NOT NULL,
+        city VARCHAR(50) NOT NULL,
         zipcode VARCHAR(6) NOT NULL,
         contact VARCHAR(10) NOT NULL,
         age VARCHAR(3) NOT NULL        
     )";
 
-    // query to create citizen table
+    // query to create complaint table
     $sql1 = "CREATE TABLE IF NOT EXISTS complaint(
         complaint_id INT PRIMARY KEY AUTO_INCREMENT,
         complaint_status VARCHAR(70) NOT NULL,
@@ -57,8 +54,7 @@ if(isset($_POST["submit"]))
     $sql2 =  "CREATE TABLE IF NOT EXISTS police_station(
         police_id INT PRIMARY KEY,
         pwd VARCHAR(50) NOT NULL UNIQUE,
-        location VARCHAR(70) NOT NULL
-                
+        location VARCHAR(70) NOT NULL   
     )";
 
     // query to create lodges table
@@ -80,22 +76,11 @@ if(isset($_POST["submit"]))
         PRIMARY KEY (police_id, complaint_id)
     )";
 
-    // query to create assign table
-    $sql5 = "CREATE TABLE IF NOT EXISTS admin (
-        username VARCHAR(20) PRIMARY KEY,
-        pwd VARCHAR(20) NOT NULL
-    )";
-
-
-    if($conn->query($sql5) === true)
-    {
-    echo "Table created successfully.";
-    } 
-    else
-    {
-    echo "ERROR: Could not able to execute $sql5. " . $conn->error;
-    }
-}
-
+    // insert Queries for police station
+    $insertStation1 = "INSERT INTO police_station (police_id,pwd,location) VALUES (101,'Andheri1234_*','Andheri')";
+    $insertStation2 = "INSERT INTO police_station (police_id,pwd,location) VALUES (102,'DNNagar1234_*','D.N. Nagar')";
+    $insertStation3 = "INSERT INTO police_station (police_id,pwd,location) VALUES (103,'Jogeshwari1234_*','Jogeshwari')";
+    $insertStation4 = "INSERT INTO police_station (police_id,pwd,location) VALUES (104,'Juhu1234_*','Juhu')";
+    $insertStation5 = "INSERT INTO police_station (police_id,pwd,location) VALUES (105,'Kandivali1234_*','Kandivali')";
 
 ?>

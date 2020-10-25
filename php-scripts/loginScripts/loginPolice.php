@@ -7,7 +7,7 @@ We are validating the login form for police
 if(isset($_POST["submit"])){
 
     $pid = trim($_POST["pid"]);
-    $password = $_POST["pass"];
+    $password = trim($_POST["pass"]);
 
     // May need to change the regex !!!
     $valid_pid = preg_match("/^\d{1,5}$/", $pid);
