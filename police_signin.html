@@ -9,16 +9,36 @@
         <link rel="stylesheet" href="stylesheet-css/StyleLogin/styleLogin.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     </head>
     <body class="bg-light">
         <header>
             <!-- Navigation Bar -->
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">{Site Name}</a>
+				<div class="navbar-collapse">
+					<ul class="navbar-nav mr-auto">
+					</ul>
+					<div class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign In</a>
+						<div class="dropdown-menu" style="margin-top: 10px;">
+							<a class="dropdown-item" href="../WP-Project/police_signin.html">Sign In as Police</a>
+							<a class="dropdown-item" href="../WP-Project/citizen_signin.html">Sign In as Citizen</a>
+							<a class="dropdown-item" href="../WP-Project/admin_signin.html">Sign In as Admin</a>
+						</div>
+					</div>
+					<div class="my-md-0">
+					  	<a class="btn btn-outline-success" href="../WP-Project/registration.html">Register</a>
+					</div>
+				</div>
+			</nav>
         </header>
         <div class="container">
             <form action="http://localhost/wp_project/WP-Project/php-scripts/loginScripts/loginPolice.php" onsubmit="return validateLoginForm()" method="POST">
                 <div class="form-login">
                     <img class="d-block mx-auto mb-4 header-img" src="images/police.png" alt="Police">
-                    <h3 class="mb-3 text-center">Sign In</h3>
+                    <h3 class="mb-5 text-center">Police Sign In</h3>
                     <div class="mb-3">
                         <label for="pid">Police Station ID</label>
                         <div class="input-group">

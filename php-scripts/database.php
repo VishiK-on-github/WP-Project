@@ -35,7 +35,8 @@
         username VARCHAR(30) NOT NULL UNIQUE,
         email VARCHAR(50) NOT NULL UNIQUE,
         pwd VARCHAR(50) NOT NULL UNIQUE,
-        address VARCHAR(200) NOT NULL UNIQUE,
+        address VARCHAR(200) NOT NULL,
+        city VARCHAR(50) NOT NULL,
         zipcode VARCHAR(6) NOT NULL,
         contact VARCHAR(10) NOT NULL,
         age VARCHAR(3) NOT NULL        
@@ -53,8 +54,7 @@
     $sql2 =  "CREATE TABLE IF NOT EXISTS police_station(
         police_id INT PRIMARY KEY,
         pwd VARCHAR(50) NOT NULL UNIQUE,
-        location VARCHAR(70) NOT NULL
-                
+        location VARCHAR(70) NOT NULL   
     )";
 
     // query to create lodges table
@@ -75,4 +75,12 @@
         FOREIGN KEY (complaint_id)  REFERENCES complaint(complaint_id), 
         PRIMARY KEY (police_id, complaint_id)
     )";
+
+    // insert Queries for police station
+    $insertStation1 = "INSERT INTO police_station (police_id,pwd,location) VALUES (101,'Andheri1234_*','Andheri')";
+    $insertStation2 = "INSERT INTO police_station (police_id,pwd,location) VALUES (102,'DNNagar1234_*','D.N. Nagar')";
+    $insertStation3 = "INSERT INTO police_station (police_id,pwd,location) VALUES (103,'Jogeshwari1234_*','Jogeshwari')";
+    $insertStation4 = "INSERT INTO police_station (police_id,pwd,location) VALUES (104,'Juhu1234_*','Juhu')";
+    $insertStation5 = "INSERT INTO police_station (police_id,pwd,location) VALUES (105,'Kandivali1234_*','Kandivali')";
+
 ?>
