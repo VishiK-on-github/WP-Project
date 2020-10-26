@@ -162,26 +162,17 @@ session_start();
                                             <label for="">Police Station ID</label>
                                             <input type="number" name="pid_up" id="pid_up" class="form-control" required>
                                         </div>
-                                        <!--<div class="mb-4">
-                                            <label for="">Old Location of Police Station</label>
-                                            <input type="text" name="location_up" id="location_up" class="form-control" required>
-                                        </div>-->
+                                        
                                         <div class="mb-4">
                                             <label for="">New Location of Police Station</label>
                                             <input type="text" name="location_up" id="location_up" class="form-control" required>
                                         </div>
-                                        <!--<div class="mb-4">
-                                            <label for="">Old Password</label>
-                                            <input type="password" name="" id="" class="form-control" required>
-                                        </div>-->
+                                        
                                         <div class="mb-4">
                                             <label for="">New Password</label>
                                             <input type="password" name="p_pass_up" id="p_pass_up" class="form-control" required>
                                         </div>
-                                        <div class="mb-5">
-                                            <label for="">Confirm New Password</label>
-                                            <input type="password" name="pass_confirm_up" id="pass__confirm_up" class="form-control" required>
-                                        </div>
+                                        
                                         <div class="mb-4">
                                             <button class="btn btn-outline-success" type="submit" onclick="update_police()" name="update_PS" id="update_PS">Update Police Station</button>
                                         </div>
@@ -408,7 +399,7 @@ session_start();
                                             </div>
                                         </div>
                                         <div class="mb-4">
-                                            <label for="">Password</label>
+                                            <label for="">New Password</label>
                                             <input type="password" name="pass_up" id="pass_up" class="form-control" required>
                                             <small class="text-muted">
                                                 Password must contain atleast one capital letter, 
