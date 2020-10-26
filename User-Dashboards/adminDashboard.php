@@ -28,7 +28,7 @@ session_start();
         <header>
             <!-- Navigation Bar -->
             <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow">
-                <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Welcome, {Admin User}</a>
+                <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Welcome <?php echo $_SESSION["username"]; ?></a>
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
                         <button class="btn btn-outline-danger">Sign out</button>
