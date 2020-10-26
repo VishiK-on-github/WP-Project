@@ -27,14 +27,13 @@ if(isset($_POST["submit-complaint"])) {
     $complaint = trim($_POST["new-complaint"]);
     $user = trim($_SESSION["username"]);
 
-    echo "Location : $location <br>";
-    echo "Complaint : $complaint <br>";
-    echo "Username : $user";
+    //echo "Location : $location <br>";
+    //echo "Complaint : $complaint <br>";
+    //echo "Username : $user";
 
     // Query
     $conn = OpenConnection();
     // To get username from session
-    $user = "Vishwanath10";
 
     // To get citizen_id of user
     $citizenIDQuery = "SELECT citizen_id FROM citizen WHERE username='$user'";

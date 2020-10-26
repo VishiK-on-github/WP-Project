@@ -15,8 +15,8 @@
     <body class="bg-light">
         <header>
             <!-- Navigation Bar -->
-            <nav class="navbar navbar-expand navbar-dark bg-dark">
-				<a class="navbar-brand" href="#">{Site Name}</a>
+            <nav class="navbar navbar-expand navbar-dark" style="background-color: #24292e;">
+				<a class="navbar-brand" href="#">ReportaCrime.com</a>
 				<div class="navbar-collapse">
 					<ul class="navbar-nav mr-auto">
 					</ul>
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="mb-4 text-center">Citizen Registration</h1>
-                    <form onsubmit="return validateRegistration()" method="POST" action="http://localhost/wp_project/WP-Project/citizenRegister/citizenRegister.php">
+                    <form onsubmit="return validateRegistration()" method="POST" action="http://localhost/wp_project/WP-Project/php-scripts/citizenRegister/citizenRegister.php">
                         <h4 class="mb-3">Personal Details</h4>
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -95,7 +95,10 @@
                                 </div>
                                 <input type="text" name="user-name" id="user-name" class="form-control" required>
                             </div>
-                            <small class="text-muted">Username constraints</small>
+                            <small class="text-muted">
+                                Username must contain atleast one lowercase, one uppercase and atleast one number.
+                                It must be of minimum 8 characters
+                            </small>
                         </div>
                         <div class="mb-3">
                             <label for="e-mail">Email</label>

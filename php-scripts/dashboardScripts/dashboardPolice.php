@@ -15,21 +15,28 @@ function OpenCon()  //Function to open connection to server
 if(isset($_POST["submit-update"])) {
     $conn = OpenCon(); //opening connection to server
     
-    $citizen_id = trim($_POST["id"]);
+    // get complaint id 
+    $complaint_id = trim($_POST["complaint-id"]);
+    $complaint_desc_new = trim($_POST["new-status"] );
     
-    // fetch the complaint id
-    $getComplaintId = $conn -> query("SELECT complaint_id from lodges WHERE cizitzen_id = '$citizen_id' ");
     // update the complaint table
-    $update_query = "UPDATE complaint SET complaint_status = '1' WHERE complaint_id = '$getComplaintId' ";
+    $update_query = "UPDATE complaint SET complaint_status = '$complaint_desc_new' WHERE complaint_id = '$complaint_id' ";
 
     if($conn -> query($update_query) == true){
-        echo "Status has been updated <br>";
+        //echo "Status has been updated <br>";
+        header("location: http://localhost/wp_project/WP-Project/User-Dashboards/policeDashboard.php");
     }
     else {
         echo "ERROR: Query $update_query was unsuccessful <br>";
     }
 
     $conn -> close(); // close connection 
+}
+
+if(isset($_POST["sign-out"])) {
+
+    session_destroy();
+    header("location: http://localhost/wp_project/WP-Project/police_signin.html");
 }
 
 ?>

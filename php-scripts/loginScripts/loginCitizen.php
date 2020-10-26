@@ -73,12 +73,6 @@
 		return $conn;
 	}
 
-	function CloseConnection($conn) {
-
-		# Method to close connection to server
-		$conn -> close();
-	}
-
 	function validCredentials($user, $pass) {
 
 		# Create Session so that we can pass this and continue in future pages
@@ -113,6 +107,7 @@
 			if($result0[0] == $user && $result0[1] == $pass) {
 
 				//echo "Success";
+				$conn->close();
 				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
 			}
 			else {
