@@ -15,22 +15,9 @@
 	if($_GET['function']=='onload')
 	{
 		echo $_SESSION["username"];
-		//echo "yo";
-	}
-
-
-	if($_GET['function']=='display')
-	{
-		$conn = OpenCon(); //opening connection to server
-		$pid=$_GET['id'];
-		$sql_query="SELECT * FROM police_station WHERE police_id='$pid'";//query to display info
-		$result = $conn->query($sql_query);//executing sql query
-		$list = $result->fetch_assoc();
-		echo json_encode($list); //returning data back in JSON format
-		$conn -> close();// closing connection to server
 	}
 	
-	if($_GET['function']=='add')
+	if($_GET['function']=='add_police')
 	{
 		$conn = OpenCon(); //opening connection to server
 		$pid=$_GET["id"];
@@ -49,9 +36,39 @@
 		$conn -> close();// closing connection to server
 	}
 
+
+	if($_GET['function']=='add_citizen')
+	{
+		$conn = OpenCon(); //opening connection to server
+		$fn=$_GET["fn"];
+		$ln=$_GET["ln"];
+		$city=$_GET["city"];
+		$zip=$_GET["zip"];
+		$age=$_GET["age"];
+		$number=$_GET["number"];
+		$addr=$_GET["addr"];
+		$username=$_GET["username"];
+		$email=$_GET["email"];
+		$pass=$_GET["pass"];
+		$sql_query="INSERT INTO citizen SET firstname='$fn',lastname='$ln',username='$username', email='$email',pwd='$pass',address='$addr', zipcode='$zip',contact='$number',age='$age',city='$city' "; //query to insert into citizen table
+		if($conn->query($sql_query)===true)//executing sql query
+		{
+			echo "Data has been added to table";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
+
+		$conn -> close();// closing connection to server
+	}
+
+
+
+
 	
 
-	if($_GET['function']=='update')
+	if($_GET['function']=='update_police')
 	{
 		$conn = OpenCon(); //opening connection to server
 		$pid=$_GET["id"];
@@ -69,11 +86,76 @@
 		$conn -> close();// closing connection to server
 	}
 
-	if($_GET['function']=='delete')
+	if($_GET['function']=='update_citizen')
+	{
+		$conn = OpenCon(); //opening connection to server
+		$id=$_GET["id"];
+		$fn=$_GET["fn"];
+		$ln=$_GET["ln"];
+		$city=$_GET["city"];
+		$zip=$_GET["zip"];
+		$age=$_GET["age"];
+		$number=$_GET["number"];
+		$addr=$_GET["addr"];
+		$username=$_GET["username"];
+		$email=$_GET["email"];
+		$pass=$_GET["pass"];
+		$sql_query="UPDATE citizen SET firstname='$fn',lastname='$ln',username='$username', email='$email',pwd='$pass',address='$addr', zipcode='$zip',contact='$number',age='$age',city='$city' WHERE citizen_id='$id' "; //query to update citizen table
+		if($conn->query($sql_query)===true)//executing sql query
+		{
+			echo "Data has been updated";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
+
+		$conn -> close();// closing connection to server
+	}
+
+
+
+
+	if($_GET['function']=='delete_police')
 	{
 		$conn = OpenCon(); //opening connection to server
 		$pid=$_GET["id"];
-		$sql_query="DELETE FROM police_station WHERE police_id = '$pid' "; //query to delete police table
+		$sql_query="DELETE FROM police_station WHERE police_id = '$pid' "; //query to delete police 
+		if($conn->query($sql_query)===true) //executing sql query
+		{
+			echo "Data has been deleted";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
+		$conn -> close();// closing connection to server
+	}
+
+
+
+	if($_GET['function']=='delete_citizen')
+	{
+		$conn = OpenCon(); //opening connection to server
+		$id=$_GET["id"];
+		$sql_query="DELETE FROM citizen WHERE citizen_id = '$id' "; //query to delete citizen 
+		if($conn->query($sql_query)===true) //executing sql query
+		{
+			echo "Data has been deleted";
+		}
+		else
+		{
+			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+		}
+		$conn -> close();// closing connection to server
+	}
+
+
+	if($_GET['function']=='delete_complaint')
+	{
+		$conn = OpenCon(); //opening connection to server
+		$id=$_GET["id"];
+		$sql_query="DELETE FROM complaint WHERE complaint_id = '$id' "; //query to delete citizen 
 		if($conn->query($sql_query)===true) //executing sql query
 		{
 			echo "Data has been deleted";

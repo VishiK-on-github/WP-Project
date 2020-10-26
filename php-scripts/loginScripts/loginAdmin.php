@@ -12,7 +12,7 @@
 		return $conn;
 	}
 	
-	if(isset($_POST['Submit']))
+	if(isset($_POST['submit']))
 	{
 		$conn = OpenCon(); //opening connection to server
 		$username=$_POST['username'];
@@ -23,7 +23,7 @@
 		if($password==$list['pwd'])
 		{
 			$_SESSION["username"]= $username;
-			echo "User exists";
+			header("location: http://localhost/wp_project/WP-Project/User-Dashboards/adminDashboard.php");
 		}
 		else
 		{
