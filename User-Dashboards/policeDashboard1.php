@@ -45,14 +45,14 @@ session_start();
                     </div>
                 </nav>
                 <main class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
-                    <div id="police-station-view">
+                    <div id="police-station-view" style="display: none;">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h1>View Complaint</h1>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
-                            <!-- Table entry contents -->
-                            <?php
+                            <table class="table table-striped table-sm">
+                                <!-- Table entry contents -->
+                                <?php
 
                             function OpenConnection() {
                                 $dbhost = "localhost";
@@ -70,7 +70,7 @@ session_start();
 
                             if(isset($pid)) {
 
-                                $complaint_query = "SELECT complaint.complaint_id, complaint.complaint_desc, complaint.complaint_status FROM complaint INNER JOIN assign ON complaint.complaint_id = assign.complaint_id WHERE assign.police_id='$pid'";
+                                $complaint_query = "SELECT complaint.complaint_id, complaint.complaint_desc, complaint.complaint_status, complaint.location FROM complaint INNER JOIN assign ON complaint.complaint_id = assign.complaint_id WHERE assign.police_id='$pid'";
 
                                 $result = $conn->query($complaint_query);
 
@@ -81,6 +81,7 @@ session_start();
                                             <th>Complaint ID</th>
                                             <th>Complaint Description</th>
                                             <th>Complaint Status</th>
+                                            <th>Complaint Location</th>
                                         </tr>";
 
                                     while($row = mysqli_fetch_array($result)) {
@@ -90,6 +91,7 @@ session_start();
                                             <td>$row[0]</td>
                                             <td>$row[1]</td>
                                             <td>$row[2]</td>
+                                            <td>$row[3]</td>
                                         </tr>";
                                     }
                                 }
@@ -106,22 +108,74 @@ session_start();
                             </table>
                         </div>
                     </div>
-                    <div id="police-station-update-complaint-status" style="display: none;">
+                    <div id="police-station-update-complaint-status">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                             <h1>Update Complaint Status</h1>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                                <form action="http://localhost/wp_project/WP-Project/User-Dashboards/policeDashboard1.php" method="POST">
-                                    <div class="mb-4">
-                                        <label for="complaint-id">Complaint ID</label>
-                                        <input type="number" name="complaint-id" id="complaint-id" class="form-control">
-                                    </div>
-                                    <div class="mb-4">
-                                        <button class="btn btn-outline-success" type="submit" name="submit-update" id="submit-update">Get Status</button>
-                                    </div>
-                                </form>
-                            </div>
+                            <?php
+
+                            function OpenCon() {
+                                $dbhost = "localhost";
+                                $dbuser = "root";
+                                $dbpass = "1234";
+                                $db = "wp_project";
+                                $conn = new mysqli($dbhost, $dbuser, $dbpass, $db);
+                                return $conn;
+                            }
+
+                            $conn = OpenCon();
+
+                            $getID = trim($_POST["complaint-id"]);
+
+                            $query = "SELECT complaint_id, complaint_status, complaint_desc FROM complaint WHERE complaint_id=$getID";
+
+                            $result = $conn->query($query);
+
+                            $queryResult = mysqli_fetch_array($result);
+
+                            $resultID = $queryResult[0];
+                            $resultStatus = $queryResult[1];
+                            $resultDesc = $queryResult[2];
+
+                            if($result == true) {
+
+                                echo "<div class='col-md-6'>
+                                        <form action='http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardPolice.php' method='POST'>
+                                            <div class='mb-4'>
+                                                <label for='complaint-id'>Complaint ID</label>
+                                                <input type='number' name='complaint-id' id='complaint-id' class='form-control' value='$resultID' readonly>
+                                            </div>
+                                            <div class='mb-4'>
+                                                <label>Complaint Description</label>
+                                                <textarea class='form-control' disabled>$resultDesc</textarea>
+                                            </div>
+                                            <div class='mb-4'>
+                                                <label>Current Complaint Status</label>
+                                                <input type='text' class='form-control' value='$resultStatus' disabled>
+                                            </div>
+                                            <div class='mb-4'>
+                                                <label for='new-status'>Complaint Status</label>
+                                                <select name='new-status' id='new-status' class='form-control'>
+                                                    <option value='Pending'>Pending</option>
+                                                    <option value='Solved'>Solved</option>
+                                                </select>
+                                            </div>
+                                            <div class='mb-4'>
+                                                <button type='submit' name='submit-update' class='btn btn-outline-success'>Change Status</button>
+                                            </div>
+                                        </form>
+                                    </div>";
+
+                            }
+                            else {
+
+                                echo "<div class='alert alert-danger'>
+                                        <h4>No complaints doesnt exists !</h4>
+                                      </div>";
+                            }
+
+                            ?>
                         </div>
                     </div>
                 </main>

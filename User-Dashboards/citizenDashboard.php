@@ -16,11 +16,13 @@ session_start();
     <body>
         <header>
             <!-- Navigation Bar -->
-            <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow">
+            <nav class="navbar navbar-dark sticky-top flex-md-nowrap shadow" style="background-color: #24292e;">
                 <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Welcome, <?php echo $_SESSION["username"]; ?></a>
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
-                    <button class="btn btn-outline-danger">Sign out</button>
+                        <form action="http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardCitizen.php" method="POST">
+                            <button class="btn btn-outline-danger" name="sign-out">Sign out</button>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -31,10 +33,10 @@ session_start();
                     <div class="sidebar-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                            <a class="nav-link" onclick="showComplaintStatus()">Complaint Status</a>
+                            <a class="nav-link" href="#" onclick="showComplaintStatus()">Complaint Status</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" onclick="showRegisterNewComplaint()">Register New Complaint</a>
+                            <a class="nav-link" href="#" onclick="showRegisterNewComplaint()">Register New Complaint</a>
                             </li>
                         </ul>
                     </div>
