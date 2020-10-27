@@ -208,12 +208,13 @@ function validCredentials($firstname,$lastname,$username,$email,$password,$addre
 
     $result = $conn->query($query);
 
-    echo "$result";
+    //echo "$result";
 
     if($result == true) {
 
         // Valid
-        echo "<script>Citizen registered successfully !</script>";
+        echo "<script>alert('Citizen registered successfully !');</script>";
+        echo "<script>window.location.href = 'http://localhost/wp_project/WP-Project/citizen_signin.html'</script>";
         // Successfully registered
     }
     else {
