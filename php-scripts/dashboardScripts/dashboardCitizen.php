@@ -44,7 +44,7 @@ if(isset($_POST["submit-complaint"])) {
     $citizenID = $citizenID[0];
 
     // To register a new complaint
-    $complaintRegister = "INSERT INTO complaint (complaint_status, complaint_desc, location) VALUES ('default', '$complaint', '$location')";
+    $complaintRegister = "INSERT INTO complaint (complaint_status, complaint_desc, location) VALUES ('Pending', '$complaint', '$location')";
 
     $complaintRegisterQuery = $conn->query($complaintRegister);
     
