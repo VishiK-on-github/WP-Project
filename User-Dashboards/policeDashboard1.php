@@ -70,7 +70,7 @@ session_start();
 
                             if(isset($pid)) {
 
-                                $complaint_query = "SELECT complaint.complaint_id, complaint.complaint_desc, complaint.complaint_status, complaint.location FROM complaint INNER JOIN assign ON complaint.complaint_id = assign.complaint_id WHERE assign.police_id='$pid'";
+                                $complaint_query = "SELECT complaint.complaint_id, complaint.complaint_desc, complaint.complaint_status FROM complaint INNER JOIN assign ON complaint.complaint_id = assign.complaint_id WHERE assign.police_id='$pid'";
 
                                 $result = $conn->query($complaint_query);
 
@@ -81,7 +81,6 @@ session_start();
                                             <th>Complaint ID</th>
                                             <th>Complaint Description</th>
                                             <th>Complaint Status</th>
-                                            <th>Complaint Location</th>
                                         </tr>";
 
                                     while($row = mysqli_fetch_array($result)) {
@@ -91,7 +90,6 @@ session_start();
                                             <td>$row[0]</td>
                                             <td>$row[1]</td>
                                             <td>$row[2]</td>
-                                            <td>$row[3]</td>
                                         </tr>";
                                     }
                                 }
@@ -134,13 +132,15 @@ session_start();
 
                             $queryResult = mysqli_fetch_array($result);
 
-                            $resultID = $queryResult[0];
-                            $resultStatus = $queryResult[1];
-                            $resultDesc = $queryResult[2];
-
                             if($result == true) {
 
-                                echo "<div class='col-md-6'>
+                                if(mysqli_num_rows($result) > 0) {
+
+                                    $resultID = $queryResult[0];
+                                    $resultStatus = $queryResult[1];
+                                    $resultDesc = $queryResult[2];
+
+                                    echo "<div class='col-md-12'>
                                         <form action='http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardPolice.php' method='POST'>
                                             <div class='mb-4'>
                                                 <label for='complaint-id'>Complaint ID</label>
@@ -166,14 +166,26 @@ session_start();
                                             </div>
                                         </form>
                                     </div>";
+                                }
+                                else {
+                                    echo "<div class='col-md-12'>
+                                            <div class='alert alert-danger'>
+                                            <h4>No complaints for given Complaint ID !</h4>
+                                            </div>
+                                            <div>
+                                                <a href='http://localhost/wp_project/WP-Project/User-Dashboards/policeDashboard.php' class='btn btn-outline-success'>Update another complaint</a>
+                                            </div>
+                                          </div>";
+                                }
 
                             }
                             else {
 
-                                echo "<div class='alert alert-danger'>
-                                        <h4>No complaints doesnt exists !</h4>
-                                      </div>";
+                                //echo "Error in connection";
+                                // Error in connection
                             }
+
+                            $conn->close();
 
                             ?>
                         </div>
