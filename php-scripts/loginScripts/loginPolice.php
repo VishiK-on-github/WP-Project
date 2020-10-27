@@ -49,8 +49,17 @@ if(isset($_POST["submit"])){
 
     }
     if($sf1 == true && $sf2 == true){
-        validate($pid, $password);
 
+        // Valid regex
+
+        validate($pid, $password);
+    }
+    else {
+
+        // There has been an error with 
+        header("location : http://localhost/wp_project/WP-Project/errorPages/userPassError1.html");
+        //echo "Username or Password is incorrect !!!";
+        // ! REDIRECT TO ERROR PAGE !
     }
 }
 else{
@@ -79,48 +88,46 @@ function validate($pid, $password){
 
     // Creating session variable 
     $_SESSION["pid"] = $pid;
-   
-    $location_query = "SELECT location FROM police_station WHERE police_id = '$pid' ";
-   
-    $location = $conn -> query($location_query);
-
-    $location0 = mysqli_fetch_array($location);
-
-    $_SESSION["location"] = $location0[0];
-    
 
     if($conn == false) {
 
-        die("ERROR: Could not connect. " . $conn->connect_error);
+        //die("ERROR: Could not connect. " . $conn->connect_error);
         // Display some error message
+        header("location: http://localhost/wp_project/WP-Project/errorPages/connectionError.html");
     }
     else {
 
         //echo "Connected Successfully";
-    }
+        $location_query = "SELECT location FROM police_station WHERE police_id = '$pid' ";
+   
+        $location = $conn -> query($location_query);
 
-    $sql = "SELECT police_id, pwd FROM police_station WHERE police_id = '$pid' ";
+        $location0 = mysqli_fetch_array($location);
 
-    $result = $conn ->query($sql);
+        $_SESSION["location"] = $location0[0];
+        
 
-    $result0 = mysqli_fetch_array($result);
+        $sql = "SELECT police_id, pwd FROM police_station WHERE police_id = '$pid' ";
 
-    if($result != false) {
+        $result = $conn ->query($sql);
 
-        if($result0[0] == $pid && $result0[1] == $password) {
-            // echo "success";
-            $conn -> close();
-            header("location: http://localhost/wp_project/WP-Project/User-Dashboards/policeDashboard.php");
+        $result0 = mysqli_fetch_array($result);
+
+        if($result != false) {
+
+            if($result0[0] == $pid && $result0[1] == $password) {
+                // echo "success";
+                $conn -> close();
+                header("location: http://localhost/wp_project/WP-Project/User-Dashboards/policeDashboard.php");
+            }
+            else {
+
+                // Redirect to error page
+                // Username password error
+                session_destroy();
+                header("location: http://localhost/wp_project/WP-Project/errorPages/userPassError1.html");
+            }
         }
-        else {
-
-            // Redirect to error page
-
-        }
-    }
-    else {
-        // echo "Invalid"
-        // Redirect to error page 
     }
 }
 

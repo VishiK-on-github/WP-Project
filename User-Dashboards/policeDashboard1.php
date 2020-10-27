@@ -33,14 +33,11 @@ session_start();
                     <div class="sidebar-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showViewComplaint()">View Complaint</a>
+                                <a class="nav-link" href="#" onclick="showViewComplaint(this)">View Complaint</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showUpdateComplaintStatus()">Update Complaint Status</a>
+                                <a class="nav-link" href="#" onclick="showUpdateComplaintStatus(this)">Update Complaint Status</a>
                             </li>
-                            <!-- li class="nav-item">
-                                <a class="nav-link" onclick="">View Anonymous Complaint</a>
-                            </li -->
                         </ul>
                     </div>
                 </nav>

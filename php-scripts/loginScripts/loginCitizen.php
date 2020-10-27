@@ -49,7 +49,7 @@
 		else {
 
 			// There has been an error with 
-			//header("location : error");
+			header("location : http://localhost/wp_project/WP-Project/errorPages/userPassError.html");
 			//echo "Username or Password is incorrect !!!";
 			// ! REDIRECT TO ERROR PAGE !
 		}
@@ -85,42 +85,39 @@
 		
 		if($conn == false) {
 
-			die("ERROR: Could not connect. " . $conn->connect_error);
+			//die("ERROR: Could not connect. " . $conn->connect_error);
 			// Display some error message
+			header("location: http://localhost/wp_project/WP-Project/errorPages/connectionError.html");
 		}
 		else {
 
 			//echo "Connected Successfully";
-		}
-		
-		// Setting the query to check the username and password
-		$sqlValid = "SELECT username, pwd FROM citizen WHERE username='$user'";
 
-		// Querying the result
-		$result = $conn->query($sqlValid);
+			// Setting the query to check the username and password
+			$sqlValid = "SELECT username, pwd FROM citizen WHERE username='$user'";
 
-		$result0 = mysqli_fetch_array($result);
+			// Querying the result
+			$result = $conn->query($sqlValid);
 
-		if($result != false) {
+			$result0 = mysqli_fetch_array($result);
 
-			// If username and password are matching we redirect to citizen dashboard
-			if($result0[0] == $user && $result0[1] == $pass) {
+			if($result != false ) {
 
-				//echo "Success";
-				$conn->close();
-				header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+				// If username and password are matching we redirect to citizen dashboard
+				if($result0[0] == $user && $result0[1] == $pass) {
+
+					//echo "Success";
+					$conn->close();
+					header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+				}
+				else {
+
+					// ! REDIRECT TO ERROR PAGE !
+					// Username password error
+					session_destroy();
+					header("location: http://localhost/wp_project/WP-Project/errorPages/userPassError.html");
+				}
 			}
-			else {
-
-				// ! REDIRECT TO ERROR PAGE !
-			}
-
 		}
-		else {
-
-			echo "Username or password incorrect";
-			// ! REDIRECT TO ERROR PAGE !
-		}
-
 	}
 ?>
