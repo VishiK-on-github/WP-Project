@@ -27,7 +27,7 @@
 		}
 		else
 		{
-			echo "User does not exist";
+			header("location: http://localhost/wp_project/WP-Project/errorPages/userPassError.html");
 		}
 		$conn -> close();// closing connection to server
 	}

@@ -301,7 +301,8 @@ session_start();
                                         <div class="mb-4">
                                             <label for="">Username</label>
                                             <input type="text" name="username" id="username" class="form-control" required>
-                                            <small class="text-muted">Username constraints</small>
+                                            <small class="text-muted"> Username can contain alphabets or numbers.
+                                It must be of minimum 8 characters</small>
                                         </div>
                                         <div class="mb-4">
                                             <label for="email">Email</label>
@@ -390,8 +391,8 @@ session_start();
                                             <label for="username_up">Username</label>
                                             <input type="text" name="username_up" id="username_up" class="form-control" required>
                                             <small class="text-muted">
-                                                Username must contain atleast one lowercase, one uppercase 
-                                                and atleast one number. It must be of minimum 8 characters
+                                                 Username can contain alphabets or numbers.
+                                                It must be of minimum 8 characters
                                             </small>
                                         </div>
                                         <div class="mb-4">

@@ -7,7 +7,7 @@ function add_police() {
         return false;
     }
     var pid = document.getElementById("pid").value;  //police id
-    var location_1 = document.getElementById("location").value;  //police station location
+    var location_1 = document.getElementById("location").value;  //police station location,location is a keyword so used location_1 as variable name
     var p_pass = document.getElementById("p_pass").value;  //police station password
     var data = "function=add_police&id="+pid+"&location="+location_1+"&password="+p_pass;
     $.ajax({ //using ajax to send data to php script to avoid refreshing of page

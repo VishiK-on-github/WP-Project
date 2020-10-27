@@ -12,10 +12,7 @@
 		return $conn;
 	}
 
-	if($_GET['function']=='onload')
-	{
-		echo $_SESSION["username"];
-	}
+	
 	
 	if($_GET['function']=='add_police')
 	{
