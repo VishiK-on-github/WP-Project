@@ -47,7 +47,7 @@ session_start();
                             <h1>View Complaint</h1>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-striped table-sm">
+                            <table class="table">
                                 <!-- Table entry contents -->
                                 <?php
 
@@ -122,8 +122,9 @@ session_start();
                             $conn = OpenCon();
 
                             $getID = trim($_POST["complaint-id"]);
+                            $getPoliceloc = trim($_SESSION["location"]);
 
-                            $query = "SELECT complaint_id, complaint_status, complaint_desc FROM complaint WHERE complaint_id=$getID";
+                            $query = "SELECT complaint_id, complaint_status, complaint_desc FROM complaint WHERE complaint_id='$getID' AND location='$getPoliceloc'";
 
                             $result = $conn->query($query);
 
@@ -137,7 +138,7 @@ session_start();
                                     $resultStatus = $queryResult[1];
                                     $resultDesc = $queryResult[2];
 
-                                    echo "<div class='col-md-12'>
+                                    echo "<div class='col-md-6'>
                                         <form action='http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardPolice.php' method='POST'>
                                             <div class='mb-4'>
                                                 <label for='complaint-id'>Complaint ID</label>
