@@ -23,60 +23,69 @@ if(isset($_POST["submit-complaint"])) {
 
     // Adding complaint to the database
 
-    $location = trim($_POST["location"]);
-    $complaint = trim($_POST["new-complaint"]);
-    $user = trim($_SESSION["username"]);
-
-    //echo "Location : $location <br>";
-    //echo "Complaint : $complaint <br>";
-    //echo "Username : $user";
-
     // Query
     $conn = OpenConnection();
     // To get username from session
 
-    // To get citizen_id of user
-    $citizenIDQuery = "SELECT citizen_id FROM citizen WHERE username='$user'";
+    if($conn == true) {
 
-    $resultCitizenIDQuery = $conn->query($citizenIDQuery);
+        $location = trim($_POST["location"]);
+        $complaint = trim($_POST["new-complaint"]);
+        $user = trim($_SESSION["username"]);
 
-    $citizenID = mysqli_fetch_array($resultCitizenIDQuery);
-    $citizenID = $citizenID[0];
+        // To get citizen_id of user
+        $citizenIDQuery = "SELECT citizen_id FROM citizen WHERE username='$user'";
 
-    // To register a new complaint
-    $complaintRegister = "INSERT INTO complaint (complaint_status, complaint_desc, location) VALUES ('Pending', '$complaint', '$location')";
+        $resultCitizenIDQuery = $conn->query($citizenIDQuery);
 
-    $complaintRegisterQuery = $conn->query($complaintRegister);
-    
-    // To get complaint id for latest complaint
-    $getComplaintID = "SELECT LAST_INSERT_ID()";
+        $citizenID = mysqli_fetch_array($resultCitizenIDQuery);
+        $citizenID = $citizenID[0];
 
-    $complaintIDQuery = $conn->query($getComplaintID);
+        // To register a new complaint
+        $complaintRegister = "INSERT INTO complaint (complaint_status, complaint_desc, location) VALUES ('Pending', '$complaint', '$location')";
 
-    $complaintID = mysqli_fetch_array($complaintIDQuery);
-    $complaintID1 = $complaintID[0];
+        $complaintRegisterQuery = $conn->query($complaintRegister);
+        
+        // To get complaint id for latest complaint
+        $getComplaintID = "SELECT LAST_INSERT_ID()";
 
-    echo "<br>Complaint ID : $complaintID1 <br>";
+        $complaintIDQuery = $conn->query($getComplaintID);
 
-    // To get police id for a specific 
-    $getPoliceStation = "SELECT police_id FROM police_station WHERE location='$location'";
-    $policeIDQuery = $conn->query($getPoliceStation);
-    $policeID = mysqli_fetch_array($policeIDQuery);
-    $policeID1 = $policeID[0];
+        $complaintID = mysqli_fetch_array($complaintIDQuery);
+        $complaintID1 = $complaintID[0];
 
-    echo "Police ID : $policeID1  <br>";
+        //echo "<br>Complaint ID : $complaintID1 <br>";
 
-    // Insert into assign table
-    $assign = "INSERT INTO assign (police_id, complaint_id) VALUES ('$policeID1', '$complaintID1')";
-    $assignQuery = $conn->query($assign);
+        // To get police id for a specific 
+        $getPoliceStation = "SELECT police_id FROM police_station WHERE location='$location'";
+        $policeIDQuery = $conn->query($getPoliceStation);
+        $policeID = mysqli_fetch_array($policeIDQuery);
+        $policeID1 = $policeID[0];
 
-    // Insert into lodges table
-    $lodges = "INSERT INTO lodges (citizen_id, complaint_id, dt) VALUES ('$citizenID', '$complaintID1', NOW())";
-    $lodgesQuery = $conn->query($lodges);
+        //echo "Police ID : $policeID1  <br>";
 
-    if($resultCitizenIDQuery && $complaintRegisterQuery && $complaintIDQuery && $policeIDQuery && $assignQuery && $lodgesQuery) {
-        echo "<script>alert('Complaint added successfully')</script>";
-        header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+        // Insert into assign table
+        $assign = "INSERT INTO assign (police_id, complaint_id) VALUES ('$policeID1', '$complaintID1')";
+        $assignQuery = $conn->query($assign);
+
+        // Insert into lodges table
+        $lodges = "INSERT INTO lodges (citizen_id, complaint_id, dt) VALUES ('$citizenID', '$complaintID1', NOW())";
+        $lodgesQuery = $conn->query($lodges);
+
+        if($resultCitizenIDQuery && $complaintRegisterQuery && $complaintIDQuery && $policeIDQuery && $assignQuery && $lodgesQuery) {
+            echo "<script>alert('Complaint added successfully')</script>";
+            header("location: http://localhost/wp_project/WP-Project/User-Dashboards/citizenDashboard.php");
+        }
+        else {
+
+            // Ambiguous error
+            header("location: http://localhost/wp_project/WP-Project/errorPages/randomError.html");
+        }
+    }
+    else {
+
+        // Connection failed
+        header("location: http://localhost/wp_project/WP-Project/errorPages/connectionError.html");
     }
 }
 
