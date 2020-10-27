@@ -31,7 +31,9 @@ session_start();
                 <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Welcome <?php echo $_SESSION["username"]; ?></a>
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
-                        <button class="btn btn-outline-danger">Sign out</button>
+                    <form action="http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php" method="POST">
+                        <button class="btn btn-outline-danger" id="sign-out" name="sign-out">Sign out</button>
+                    </form>
                     </li>
                 </ul>
             </nav>
@@ -45,16 +47,16 @@ session_start();
                         </h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showViewPoliceStation()">View Police Stations</a>
+                                <a class="nav-link" href="#viewpolice" onclick="showViewPoliceStation()">View Police Stations</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showAddPoliceStation()">Add Police Station</a>
+                                <a class="nav-link" href="#addpolice" onclick="showAddPoliceStation()">Add Police Station</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showUpdatePoliceStation()">Update Police Station</a>
+                                <a class="nav-link" href="#updatepolice" onclick="showUpdatePoliceStation()">Update Police Station</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showDeletePoliceStation()">Delete Police Station</a>
+                                <a class="nav-link" href="#deletepolice" onclick="showDeletePoliceStation()">Delete Police Station</a>
                             </li>
                         </ul>
                         <h4 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
@@ -62,16 +64,16 @@ session_start();
                         </h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showViewCitizen()">View Citizen</a>
+                                <a class="nav-link" href="#viewcitizen" onclick="showViewCitizen()">View Citizen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showAddCitizen()">Add Citizen</a>
+                                <a class="nav-link" href="#addcitizen" onclick="showAddCitizen()">Add Citizen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showUpdateCitizen()">Update Citizen</a>
+                                <a class="nav-link" href="#updatecitizen" onclick="showUpdateCitizen()">Update Citizen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showDeleteCitizen()">Delete Citizen</a>
+                                <a class="nav-link" href="#deletecitizen" onclick="showDeleteCitizen()">Delete Citizen</a>
                             </li>
                         </ul>
                         <h4 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
@@ -79,10 +81,10 @@ session_start();
                         </h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showViewComplaint()">View Complaint</a>
+                                <a class="nav-link" href="#viewcomplaint" onclick="showViewComplaint()">View Complaint</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="showDeleteComplaint()">Delete Complaint</a>
+                                <a class="nav-link" href="#deletecomplaint" onclick="showDeleteComplaint()">Delete Complaint</a>
                             </li>
                         </ul>
                     </div>

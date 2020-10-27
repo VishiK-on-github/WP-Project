@@ -54,6 +54,7 @@
 		if($conn->query($sql_query)===true)//executing sql query
 		{
 			echo "Data has been added to table";
+			//header("location: window.location.href = http://localhost/wp_project/WP-Project/User-Dashboards/adminDashboard.php#viewcitizen");
 		}
 		else
 		{
@@ -166,6 +167,15 @@
 		}
 		$conn -> close();// closing connection to server
 	}
+
+
+	if(isset($_POST["sign-out"])) {
+
+    // Code which will run when we click signout
+	session_unset();
+    session_destroy();
+    header("location: http://localhost/wp_project/WP-Project/admin_signin.html");
+}
 
 
 

@@ -41,8 +41,10 @@ function add_citizen() {
         data: data,
         success: function (message) {
             alert(message);
+            //location.assign("http://localhost/wp_project/WP-Project/User-Dashboards/adminDashboard.php#viewcitizen");
         }
     });
+    
     return false;
 }
 
@@ -596,3 +598,5 @@ function validAge(age, pattern, id) {
         return false;
     }
 }
+
+
