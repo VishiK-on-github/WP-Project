@@ -30,7 +30,7 @@ session_start();
                 <nav class="col-md-2 col-lg-2 d-md-block bg-light sidebar">
                     <div class="sidebar-sticky pt-3">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
+                            <li class="nav-item" active>
                                 <a class="nav-link" onclick="showViewComplaint()">View Complaint</a>
                             </li>
                             <li class="nav-item">
