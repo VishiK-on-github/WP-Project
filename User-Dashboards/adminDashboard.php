@@ -47,16 +47,16 @@ session_start();
                         </h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#viewpolice" onclick="showViewPoliceStation()">View Police Stations</a>
+                                <a class="nav-link" href="#" onclick="showViewPoliceStation(this)">View Police Stations</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#addpolice" onclick="showAddPoliceStation()">Add Police Station</a>
+                                <a class="nav-link" href="#addpolice" onclick="showAddPoliceStation(this)">Add Police Station</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#updatepolice" onclick="showUpdatePoliceStation()">Update Police Station</a>
+                                <a class="nav-link" href="#updatepolice" onclick="showUpdatePoliceStation(this)">Update Police Station</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#deletepolice" onclick="showDeletePoliceStation()">Delete Police Station</a>
+                                <a class="nav-link" href="#deletepolice" onclick="showDeletePoliceStation(this)">Delete Police Station</a>
                             </li>
                         </ul>
                         <h4 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
@@ -64,16 +64,16 @@ session_start();
                         </h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#viewcitizen" onclick="showViewCitizen()">View Citizen</a>
+                                <a class="nav-link" href="#viewcitizen" onclick="showViewCitizen(this)">View Citizen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#addcitizen" onclick="showAddCitizen()">Add Citizen</a>
+                                <a class="nav-link" href="#addcitizen" onclick="showAddCitizen(this)">Add Citizen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#updatecitizen" onclick="showUpdateCitizen()">Update Citizen</a>
+                                <a class="nav-link" href="#updatecitizen" onclick="showUpdateCitizen(this)">Update Citizen</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#deletecitizen" onclick="showDeleteCitizen()">Delete Citizen</a>
+                                <a class="nav-link" href="#deletecitizen" onclick="showDeleteCitizen(this)">Delete Citizen</a>
                             </li>
                         </ul>
                         <h4 class="d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
@@ -81,10 +81,10 @@ session_start();
                         </h4>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#viewcomplaint" onclick="showViewComplaint()">View Complaint</a>
+                                <a class="nav-link" href="#viewcomplaint" onclick="showViewComplaint(this)">View Complaint</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#deletecomplaint" onclick="showDeleteComplaint()">Delete Complaint</a>
+                                <a class="nav-link" href="#deletecomplaint" onclick="showDeleteComplaint(this)">Delete Complaint</a>
                             </li>
                         </ul>
                     </div>
