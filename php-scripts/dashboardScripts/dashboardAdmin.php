@@ -54,6 +54,7 @@
 		if($conn->query($sql_query)===true)//executing sql query
 		{
 			echo "Data has been added to table";
+			//header("location: window.location.href = http://localhost/wp_project/WP-Project/User-Dashboards/adminDashboard.php#viewcitizen");
 		}
 		else
 		{
