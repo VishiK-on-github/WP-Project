@@ -1,5 +1,5 @@
 // To show the police-station-view div and hide all other components
-function showViewPoliceStation() {
+function showViewPoliceStation(element) {
 
     document.getElementById("citizen-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -9,10 +9,12 @@ function showViewPoliceStation() {
     document.getElementById("police-station-add").style.display = "none";
     document.getElementById("police-station-update").style.display = "none";
     document.getElementById("police-station-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the police-station-add div and hide all other components
-function showAddPoliceStation() {
+function showAddPoliceStation(element) {
 
     document.getElementById("citizen-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -22,11 +24,13 @@ function showAddPoliceStation() {
     document.getElementById("police-station-view").style.display = "none";
     document.getElementById("police-station-update").style.display = "none";
     document.getElementById("police-station-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 
 // To show the police-station-update div and hide all other components
-function showUpdatePoliceStation() {
+function showUpdatePoliceStation(element) {
 
     document.getElementById("citizen-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -36,10 +40,12 @@ function showUpdatePoliceStation() {
     document.getElementById("police-station-view").style.display = "none";
     document.getElementById("police-station-add").style.display = "none";
     document.getElementById("police-station-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the police-station-delete div and hide all other components
-function showDeletePoliceStation() {
+function showDeletePoliceStation(element) {
 
     document.getElementById("citizen-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -49,10 +55,12 @@ function showDeletePoliceStation() {
     document.getElementById("police-station-view").style.display = "none";
     document.getElementById("police-station-add").style.display = "none";
     document.getElementById("police-station-update").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the citizen-view div and hide all other components
-function showViewCitizen() {
+function showViewCitizen(element) {
 
     document.getElementById("police-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -62,10 +70,12 @@ function showViewCitizen() {
     document.getElementById("citizen-add").style.display = "none";
     document.getElementById("citizen-update").style.display = "none";
     document.getElementById("citizen-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the citizen-add div and hide all other components
-function showAddCitizen() {
+function showAddCitizen(element) {
 
     document.getElementById("police-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -75,10 +85,12 @@ function showAddCitizen() {
     document.getElementById("citizen-view").style.display = "none";
     document.getElementById("citizen-update").style.display = "none";
     document.getElementById("citizen-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the citizen-update div and hide all other components
-function showUpdateCitizen() {
+function showUpdateCitizen(element) {
 
     document.getElementById("police-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -88,10 +100,12 @@ function showUpdateCitizen() {
     document.getElementById("citizen-view").style.display = "none";
     document.getElementById("citizen-add").style.display = "none";
     document.getElementById("citizen-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the citizen-delete div and hide all other components
-function showDeleteCitizen() {
+function showDeleteCitizen(element) {
 
     document.getElementById("police-functions").style.display = "none";
     document.getElementById("complaint-functions").style.display = "none";
@@ -101,10 +115,12 @@ function showDeleteCitizen() {
     document.getElementById("citizen-view").style.display = "none";
     document.getElementById("citizen-add").style.display = "none";
     document.getElementById("citizen-update").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the complaint-view div and hide all other components
-function showViewComplaint() {
+function showViewComplaint(element) {
 
     document.getElementById("police-functions").style.display = "none";
     document.getElementById("citizen-functions").style.display = "none";
@@ -112,10 +128,12 @@ function showViewComplaint() {
 
     document.getElementById("complaint-view").style.display = "block";
     document.getElementById("complaint-delete").style.display = "none";
+
+    changeColor(element);
 }
 
 // To show the complaint-delete div and hide all other components
-function showDeleteComplaint() {
+function showDeleteComplaint(element) {
 
     document.getElementById("police-functions").style.display = "none";
     document.getElementById("citizen-functions").style.display = "none";
@@ -123,4 +141,25 @@ function showDeleteComplaint() {
 
     document.getElementById("complaint-delete").style.display = "block";
     document.getElementById("complaint-view").style.display = "none";
+
+    changeColor(element);
+}
+
+function changeColor(element) {
+
+
+    const functionList = document.getElementsByClassName("nav-link");
+    for(var i=0; i<functionList.length; i++) {
+
+        if(functionList[i] == element) {
+
+            functionList[i].parentNode.style.backgroundColor = "grey";
+            functionList[i].style.color = "lightgreen";
+        }
+        else {
+
+            functionList[i].parentNode.style.backgroundColor = "transparent";
+            functionList[i].style.color = "#333";
+        }
+    }
 }
