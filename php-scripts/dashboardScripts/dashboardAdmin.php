@@ -30,7 +30,7 @@
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			echo "Could not add data";
 		}
 
 		$conn -> close();// closing connection to server
@@ -57,7 +57,7 @@
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			echo "Could not add data";
 		}
 
 		$conn -> close();// closing connection to server
@@ -81,7 +81,7 @@
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			echo "Could not update data";
 		}
 		$conn -> close();// closing connection to server
 	}
@@ -107,7 +107,7 @@
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			echo "Could not update data";
 		}
 
 		$conn -> close();// closing connection to server
@@ -120,12 +120,14 @@
 	{
 		$conn = OpenCon(); //opening connection to server
 		$pid=$_GET["id"];
-		$sql_query="SELECT * from police WHERE police_id = '$id' "; //query to check whether police station exists or not
+		$sql_query="SELECT * from police_station WHERE police_id = '$pid' "; //query to check whether police station exists or not
 		$result = $conn->query($sql_query);
 		if ($result->num_rows== 0){
 			echo "ID does not exist";
 			exit();
 		} 
+		$sql_query_1="DELETE FROM assign WHERE police_id='$pid'";
+		$conn->query($sql_query_1);
 		$sql_query="DELETE FROM police_station WHERE police_id = '$pid' "; //query to delete police 
 		if($conn->query($sql_query)===true) //executing sql query
 		{
@@ -133,7 +135,7 @@
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			echo "Could not delete data";
 		}
 		$conn -> close();// closing connection to server
 	}
@@ -149,7 +151,9 @@
 		if ($result->num_rows== 0){
 			echo "ID does not exist";
 			exit();
-		} 
+		}
+		$sql_query_1="DELETE FROM lodges WHERE citizen_id='$id'";
+		$conn->query($sql_query_1);
 		$sql_query="DELETE FROM citizen WHERE citizen_id = '$id' "; //query to delete citizen 
 
 		if($conn->query($sql_query)===true) //executing sql query
@@ -158,7 +162,7 @@
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			echo "Could not delete data";
 		}
 		$conn -> close();// closing connection to server
 	}
@@ -174,14 +178,19 @@
 			echo "ID does not exist";
 			exit();
 		} 
-		$sql_query="DELETE FROM complaint WHERE complaint_id = '$id' "; //query to delete citizen 
-		if($conn->query($sql_query)===true) //executing sql query
+		$sql_query="DELETE FROM assign WHERE complaint_id='$id'";
+		$conn->query($sql_query);
+		$sql_query_1="DELETE FROM lodges WHERE complaint_id='$id'";
+		$conn->query($sql_query_1);
+		$sql_query_2="DELETE FROM complaint WHERE complaint_id = '$id'"; //query to delete citizen 
+		if($conn->query($sql_query_2)===true) //executing sql query
 		{
 			echo "true";
 		}
 		else
 		{
-			echo "ERROR: Could not able to execute $sql_query. " . $conn->error;
+			//echo "Could not delete data";
+			echo "ERROR: Could not able to execute $sql_query" . $conn->error;
 		}
 		$conn -> close();// closing connection to server
 	}
