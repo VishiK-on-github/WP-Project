@@ -183,9 +183,14 @@ if(isset($_POST["submit"])) {
         $sf12 = false;
     }
 
+    // Validity status of fields if one fails we
     if($sf1 && $sf2 && $sf3 && $sf4 && $sf5 && $sf6 && $sf7 && $sf8 && $sf9 && $sf10 && $sf11 && $sf12) {
 
         validCredentials($firstname,$lastname,$username,$email,$password,$address,$city,$zip,$contact,$age);
+    }
+    else {
+
+        // Some field is invalid
     }
 
 }
@@ -215,7 +220,7 @@ function validCredentials($firstname,$lastname,$username,$email,$password,$addre
 
         // Some error
         echo "<script>alert('Username, E-Mail or Password has already been taken !')</script>";
-        //header("location: http://localhost/wp_project/WP-Project/registration.html");
+        echo "<script>window.location.href = 'http://localhost/wp_project/WP-Project/registration.html'</script>";
     }
 
     $conn->close();
