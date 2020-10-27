@@ -7,18 +7,27 @@ function add_police() {
         return false;
     }
     var pid = document.getElementById("pid").value;  //police id
-    var location = document.getElementById("location").value;  //police station location
+    var location_1 = document.getElementById("location").value;  //police station location
     var p_pass = document.getElementById("p_pass").value;  //police station password
-    var data = "function=add_police&id="+pid+"&location="+location+"&password="+p_pass;
+    var data = "function=add_police&id="+pid+"&location="+location_1+"&password="+p_pass;
     $.ajax({ //using ajax to send data to php script to avoid refreshing of page
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     return false;
 }
+
+
+
+
 
 function add_citizen() {   
     if (!validateRegistration_addCitizen()) {  //to check whether fields entered correctly or not
@@ -40,8 +49,12 @@ function add_citizen() {
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
-            //location.assign("http://localhost/wp_project/WP-Project/User-Dashboards/adminDashboard.php#viewcitizen");
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     
@@ -54,14 +67,19 @@ function update_police() {
         return false;
     }
     var pid = document.getElementById("pid_up").value;  //police id
-    var location = document.getElementById("location_up").value;  //police station location
+    var location_1 = document.getElementById("location_up").value;  //police station location
     var p_pass = document.getElementById("p_pass_up").value;  //police station password
-    var data = "function=update_police&id=" + pid + "&location=" + location + "&password=" + p_pass;
+    var data = "function=update_police&id=" + pid + "&location=" + location_1 + "&password=" + p_pass;
     $.ajax({ //using ajax to send data to php script to avoid refreshing of page
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     return false;
@@ -89,7 +107,12 @@ function update_citizen() {
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     return false;
@@ -106,7 +129,12 @@ function delete_func_police() {  //delete is a reserved keyword
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     return false;
@@ -120,7 +148,12 @@ function delete_func_citizen() {  //delete is a reserved keyword
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     return false;
@@ -134,7 +167,12 @@ function delete_func_complaint() {  //delete is a reserved keyword
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            alert(message);
+            if (message == "true") {
+                location.reload();
+            }
+            else {
+                alert(message);
+            }
         }
     });
     return false;
@@ -598,5 +636,4 @@ function validAge(age, pattern, id) {
         return false;
     }
 }
-
 
