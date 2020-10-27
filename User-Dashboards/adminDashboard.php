@@ -31,7 +31,9 @@ session_start();
                 <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Welcome <?php echo $_SESSION["username"]; ?></a>
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
-                        <button class="btn btn-outline-danger">Sign out</button>
+                    <form action="http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php" method="POST">
+                        <button class="btn btn-outline-danger" id="sign-out" name="sign-out">Sign out</button>
+                    </form>
                     </li>
                 </ul>
             </nav>

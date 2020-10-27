@@ -168,5 +168,14 @@
 	}
 
 
+	if(isset($_POST["sign-out"])) {
+
+    // Code which will run when we click signout
+	session_unset();
+    session_destroy();
+    header("location: http://localhost/wp_project/WP-Project/admin_signin.html");
+}
+
+
 
 ?>
