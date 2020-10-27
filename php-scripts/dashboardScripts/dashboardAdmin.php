@@ -26,7 +26,7 @@
 		$sql_query="INSERT INTO police_station SET police_id='$pid', location='$location',pwd='$p_pass' "; //query to insert into police table
 		if($conn->query($sql_query)===true)//executing sql query
 		{
-			echo "Data has been added to table";
+			echo "true";
 		}
 		else
 		{
@@ -53,8 +53,7 @@
 		$sql_query="INSERT INTO citizen SET firstname='$fn',lastname='$ln',username='$username', email='$email',pwd='$pass',address='$addr', zipcode='$zip',contact='$number',age='$age',city='$city' "; //query to insert into citizen table
 		if($conn->query($sql_query)===true)//executing sql query
 		{
-			echo "Data has been added to table";
-			//header("location: window.location.href = http://localhost/wp_project/WP-Project/User-Dashboards/adminDashboard.php#viewcitizen");
+			echo "true";
 		}
 		else
 		{
@@ -78,7 +77,7 @@
 		$sql_query="UPDATE police_station SET pwd = '$p_pass',location='$location' WHERE police_id = '$pid' "; //query to update police table
 		if($conn->query($sql_query)===true) //executing sql query
 		{
-			echo "Data has been updated";
+			echo "true";
 		}
 		else
 		{
@@ -104,7 +103,7 @@
 		$sql_query="UPDATE citizen SET firstname='$fn',lastname='$ln',username='$username', email='$email',pwd='$pass',address='$addr', zipcode='$zip',contact='$number',age='$age',city='$city' WHERE citizen_id='$id' "; //query to update citizen table
 		if($conn->query($sql_query)===true)//executing sql query
 		{
-			echo "Data has been updated";
+			echo "true";
 		}
 		else
 		{
@@ -121,10 +120,16 @@
 	{
 		$conn = OpenCon(); //opening connection to server
 		$pid=$_GET["id"];
+		$sql_query="SELECT * from police WHERE police_id = '$id' "; //query to check whether police station exists or not
+		$result = $conn->query($sql_query);
+		if ($result->num_rows== 0){
+			echo "ID does not exist";
+			exit();
+		} 
 		$sql_query="DELETE FROM police_station WHERE police_id = '$pid' "; //query to delete police 
 		if($conn->query($sql_query)===true) //executing sql query
 		{
-			echo "Data has been deleted";
+			echo "true";
 		}
 		else
 		{
@@ -139,10 +144,17 @@
 	{
 		$conn = OpenCon(); //opening connection to server
 		$id=$_GET["id"];
+		$sql_query="SELECT * from citizen WHERE citizen_id = '$id' "; //query to check whether citizen id exists or not
+		$result = $conn->query($sql_query);
+		if ($result->num_rows== 0){
+			echo "ID does not exist";
+			exit();
+		} 
 		$sql_query="DELETE FROM citizen WHERE citizen_id = '$id' "; //query to delete citizen 
+
 		if($conn->query($sql_query)===true) //executing sql query
 		{
-			echo "Data has been deleted";
+			echo "true";
 		}
 		else
 		{
@@ -156,10 +168,16 @@
 	{
 		$conn = OpenCon(); //opening connection to server
 		$id=$_GET["id"];
+		$sql_query="SELECT * from complaint WHERE complaint_id = '$id' "; //query to check whether complaint exists or not
+		$result = $conn->query($sql_query);
+		if ($result->num_rows== 0){
+			echo "ID does not exist";
+			exit();
+		} 
 		$sql_query="DELETE FROM complaint WHERE complaint_id = '$id' "; //query to delete citizen 
 		if($conn->query($sql_query)===true) //executing sql query
 		{
-			echo "Data has been deleted";
+			echo "true";
 		}
 		else
 		{
