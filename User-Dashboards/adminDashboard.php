@@ -98,8 +98,8 @@ session_start();
                             </div>
                             <div class="table-responsive">
                                 <!-- Table to display data retrieved from php file -->
-                                <table class="table table-striped table-sm">  
-                                    <tr>
+                                <table class="table">  
+                                    <tr class='thead-dark'>
                                         <th>Police ID</th>
                                         <th>Location</th>
                                         <th>Password</th>
@@ -212,19 +212,19 @@ session_start();
                                 <h1>View Citizen</h1>
                             </div>
                             <div class="table-responsive">
-                                <table class="table table-striped table-sm">  
-                                    <tr>
+                                <table class="table">  
+                                    <tr class='thead-dark'>
                                         <th>Citizen ID</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
-                                        <th>username</th>
-                                        <th>email</th>
-                                        <th>password</th>
-                                        <th>address</th>
-                                        <th>zipcode</th>
-                                        <th>contact</th>
-                                        <th>age</th>
-                                        <th>city</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Address</th>
+                                        <th>Zipcode</th>
+                                        <th>Contact</th>
+                                        <th>Age</th>
+                                        <th>City</th>
                                     </tr>
                                    <?php
                                     $conn = OpenCon(); //opening connection to server
@@ -340,7 +340,7 @@ session_start();
                                 <h1>Update Citizen</h1>
                             </div>
                             <div class="row">
-                                <div class="">
+                                <div class="col-md-10">
                                     <form name="form_citizen_update" action="javascript:void(0);" method="post">
                                         <div class="row">
                                             <div class="col-md-6 mb-4">
@@ -448,8 +448,8 @@ session_start();
                                 <h1>View Complaint</h1>
                             </div>
                             <div class="table-responsive">
-                                <table class="table table-striped table-sm">  
-                                    <tr>
+                                <table class="table">  
+                                    <tr class='thead-dark'>
                                         <th>Complaint ID</th>
                                         <th>Status</th>
                                         <th>Description</th>
