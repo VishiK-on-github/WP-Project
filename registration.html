@@ -53,7 +53,11 @@
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="city">City</label>
-                                <input type="text" name="city" id="city" class="form-control" required>
+                                <select name="city" id="city" class="custom-select">
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Thane">Thane</option>
+                                </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="zip">Zip</label>
@@ -124,7 +128,7 @@
                             <small class="text-muted">
                                 Password must contain atleast one capital letter, 
                                 one normal letter, one number, 
-                                one special character and must be atleast 6 characters long
+                                one special character and must be atleast 8 characters long
                             </small>
                         </div>
                         <div class="mb-3">

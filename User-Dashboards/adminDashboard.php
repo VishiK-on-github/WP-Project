@@ -319,7 +319,7 @@ session_start();
                                             <small class="text-muted">
                                                 Password must contain atleast one capital letter, 
                                                 one normal letter, one number, 
-                                                one special character and must be atleast 6 characters long
+                                                one special character and must be atleast 8 characters long
                                             </small>
                                         </div>
                                         <div class="mb-5">
@@ -410,7 +410,7 @@ session_start();
                                             <small class="text-muted">
                                                 Password must contain atleast one capital letter, 
                                                 one normal letter, one number, 
-                                                one special character and must be atleast 6 characters long
+                                                one special character and must be atleast 8 characters long
                                             </small>
                                         </div>
                                         <div class="mb-5">
