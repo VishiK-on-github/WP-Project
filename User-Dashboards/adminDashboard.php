@@ -142,7 +142,13 @@ session_start();
                                         <div class="mb-5">
                                             <label for="">Password</label>
                                             <input type="password" name="p_pass" id="p_pass" class="form-control" required>
+                                            <small class="text-muted">
+                                                Password must contain atleast one capital letter, 
+                                                one normal letter, one number, 
+                                                one special character and must be atleast 8 characters long
+                                            </small>
                                         </div>
+                                        
                                         <div class="mb-4">
                                             <button class="btn btn-outline-success" type="submit" onclick="add_police()" name="add_PS" id="add_PS">Create Police Station</button>
                                         </div>
@@ -173,6 +179,11 @@ session_start();
                                         <div class="mb-4">
                                             <label for="">New Password</label>
                                             <input type="password" name="p_pass_up" id="p_pass_up" class="form-control" required>
+                                            <small class="text-muted">
+                                                Password must contain atleast one capital letter, 
+                                                one normal letter, one number, 
+                                                one special character and must be atleast 8 characters long
+                                            </small>
                                         </div>
                                         
                                         <div class="mb-4">

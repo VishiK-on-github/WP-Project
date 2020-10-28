@@ -71,6 +71,12 @@
 		$pid=$_GET["id"];
 		$location=$_GET["location"];
 		$p_pass=$_GET["password"];
+		$sql_query="SELECT * from police_station WHERE police_id = '$pid' "; //query to check whether police station id exists or not
+		$result = $conn->query($sql_query);
+		if ($result->num_rows== 0){
+			echo "ID does not exist";
+			exit();
+		}
 		$sql_query="UPDATE police_station SET pwd = '$p_pass',location='$location' WHERE police_id = '$pid' "; //query to update police table
 		if($conn->query($sql_query)===true) //executing sql query
 		{
@@ -97,6 +103,12 @@
 		$username=$_GET["username"];
 		$email=$_GET["email"];
 		$pass=$_GET["pass"];
+		$sql_query="SELECT * from citizen WHERE citizen_id = '$id' "; //query to check whether citizen id exists or not
+		$result = $conn->query($sql_query);
+		if ($result->num_rows== 0){
+			echo "ID does not exist";
+			exit();
+		}
 		$sql_query="UPDATE citizen SET firstname='$fn',lastname='$ln',username='$username', email='$email',pwd='$pass',address='$addr', zipcode='$zip',contact='$number',age='$age',city='$city' WHERE citizen_id='$id' "; //query to update citizen table
 		if($conn->query($sql_query)===true)//executing sql query
 		{
