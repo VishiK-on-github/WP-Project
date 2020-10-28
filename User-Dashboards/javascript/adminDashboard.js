@@ -50,7 +50,8 @@ function add_citizen() {
         data: data,
         success: function (message) {
             if (message == "true") {
-                location.reload();
+                sessionStorage.setItem("citizen", "true");
+                document.location.reload();
             }
             else {
                 alert(message);
@@ -108,7 +109,8 @@ function update_citizen() {
         data: data,
         success: function (message) {
             if (message == "true") {
-                location.reload();
+                sessionStorage.setItem("citizen", "true");
+                document.location.reload();
             }
             else {
                 alert(message);
@@ -148,12 +150,15 @@ function delete_func_citizen() {  //delete is a reserved keyword
         url: "http://localhost/wp_project/WP-Project/php-scripts/dashboardScripts/dashboardAdmin.php",
         data: data,
         success: function (message) {
-            if (message == "true") {
-                location.reload();
-            }
-            else {
-                alert(message);
-            }
+            
+                if (message == "true") {
+                    sessionStorage.setItem("citizen", "true");
+                    document.location.reload();
+                }
+                else {
+                    alert(message);
+                }
+            
         }
     });
     return false;
@@ -168,7 +173,8 @@ function delete_func_complaint() {  //delete is a reserved keyword
         data: data,
         success: function (message) {
             if (message == "true") {
-                location.reload();
+                sessionStorage.setItem("complaint", "true");
+                document.location.reload();
             }
             else {
                 alert(message);
@@ -178,7 +184,34 @@ function delete_func_complaint() {  //delete is a reserved keyword
     return false;
 }
 
+window.onload = function () {   //function to navigate to specific view after reloading based on session storage
+    var citizen = sessionStorage.getItem("citizen");
+    var complaint = sessionStorage.getItem("complaint");
+    
+    if (complaint) {
+        sessionStorage.removeItem("complaint");
+        document.getElementById("police-functions").style.display = "none";
+        document.getElementById("citizen-functions").style.display = "none";
+        document.getElementById("complaint-functions").style.display = "block";
 
+        document.getElementById("complaint-view").style.display = "block";
+        document.getElementById("complaint-delete").style.display = "none";
+        
+    }
+    else if (citizen) {
+        sessionStorage.removeItem("citizen");
+        document.getElementById("police-functions").style.display = "none";
+        document.getElementById("complaint-functions").style.display = "none";
+        document.getElementById("citizen-functions").style.display = "block";
+
+        document.getElementById("citizen-view").style.display = "block";
+        document.getElementById("citizen-add").style.display = "none";
+        document.getElementById("citizen-update").style.display = "none";
+        document.getElementById("citizen-delete").style.display = "none";
+        
+    }
+    
+}
 
 function validateRegistration_addCitizen() {  //function to validate adding of citizen
 
@@ -636,4 +669,21 @@ function validAge(age, pattern, id) {
         return false;
     }
 }
+
+
+function showViewCitizen(element) {
+
+    document.getElementById("police-functions").style.display = "none";
+    document.getElementById("complaint-functions").style.display = "none";
+    document.getElementById("citizen-functions").style.display = "block";
+
+    document.getElementById("citizen-view").style.display = "block";
+    document.getElementById("citizen-add").style.display = "none";
+    document.getElementById("citizen-update").style.display = "none";
+    document.getElementById("citizen-delete").style.display = "none";
+
+    changeColor(element);
+}
+
+
 
