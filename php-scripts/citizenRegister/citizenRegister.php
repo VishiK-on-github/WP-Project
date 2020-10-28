@@ -122,7 +122,7 @@ if(isset($_POST["submit"])) {
     $sf7 = true;
 
     // Username validation
-    $validUsername = preg_match("/[0-9a-zA-Z]{8,}/", $username);
+    $validUsername = preg_match("/^[0-9a-zA-Z]{8,}$/", $username);
     if(!$validUsername) {
 
         // Invalid

@@ -14,7 +14,7 @@ function formValidation() {
 
     // Defining regex for filtering (!important!)
 
-    const regexUsername = /[0-9a-zA-Z]{8,}/;
+    const regexUsername = /^[0-9a-zA-Z]{8,}$/;
     const regexPassword = /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/;
 
 

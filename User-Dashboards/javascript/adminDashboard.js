@@ -232,7 +232,7 @@ function validateRegistration_addCitizen() {  //function to validate adding of c
     // Defining regex for filtering
 
     const regexName = /^[a-zA-Z]+$/;
-    const regexUsername = /[0-9a-zA-Z]{8,}/;
+    const regexUsername = /^[0-9a-zA-Z]{8,}$/;
     const regexPassword = /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/;
     const regexEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const regexNumber = /^[0-9]+$/;
@@ -295,7 +295,7 @@ function validateRegistration_updateCitizen() {  //function to validate update o
     // Defining regex for filtering
 
     const regexName = /^[a-zA-Z]+$/;
-    const regexUsername = /[0-9a-zA-Z]{8,}/;
+    const regexUsername = /^[0-9a-zA-Z]{8,}$/;
     const regexPassword = /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d]).*$/;
     const regexEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const regexNumber = /^[0-9]+$/;
