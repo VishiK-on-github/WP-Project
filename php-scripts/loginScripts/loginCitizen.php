@@ -28,7 +28,7 @@
 
 		// Username validation
 		$username = trim($_POST["username"]);
-		$valid_username = preg_match("/^[a-zA-Z0-9]+$/", $username);
+		$valid_username = preg_match("/[0-9a-zA-Z]{8,}/", $username);
 
 		if(!$valid_username) {
 
