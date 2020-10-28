@@ -147,7 +147,7 @@ function showDeleteComplaint(element) {
 
 function changeColor(element) {
 
-
+   
     const functionList = document.getElementsByClassName("nav-link");
     for(var i=0; i<functionList.length; i++) {
 
