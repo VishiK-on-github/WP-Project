@@ -1,9 +1,5 @@
 # WP-Project
-Web Programming Project
+Web Programming and Software Engineering Project
 
 
-error pages:
-
-1. username, password error : police, citizen, admin signins
-2. Connection error : a la carte
 
